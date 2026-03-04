@@ -1,0 +1,788 @@
+/* ============================================================
+   Sebastian Bosman Portfolio — Design System
+   Aesthetic reference: cursor.com
+   ============================================================ */
+
+
+/* ============================================================
+   1. CSS Custom Properties
+   ============================================================ */
+
+:root {
+  /* Colour tokens */
+  --bg:             #0a0a0a;
+  --surface:        #111111;
+  --surface-hover:  #1a1a1a;
+  --border:         #1e1e1e;
+  --border-hover:   #333333;
+  --text-primary:   #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted:     #444444;
+  --accent:         #ffffff;
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  --text-label:  11px;
+  --text-base:   13px;
+  --text-body:   14px;
+  --text-hero:   64px;
+
+  /* Layout */
+  --max-width:    900px;
+  --radius:       8px;
+  --radius-btn:   6px;
+
+  /* Motion */
+  --transition:   150ms ease;
+  --fade:         400ms ease;
+}
+
+
+/* ============================================================
+   2. Reset & Base
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+
+/* ============================================================
+   3. Layout Utilities
+   ============================================================ */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   4. Typography
+   ============================================================ */
+
+.text-hero {
+  font-size: var(--text-hero);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-role {
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.text-label {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   5. Nav
+   ============================================================ */
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  transition: color var(--transition);
+}
+
+.nav-brand:hover {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+}
+
+
+/* ============================================================
+   6. Section Label
+   ============================================================ */
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section-label span {
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border);
+}
+
+
+/* ============================================================
+   7. Buttons
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-base);
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  font-family: var(--font-main);
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg);
+  border-color: var(--text-primary);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   8. Cards
+   ============================================================ */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--surface-hover);
+}
+
+.card-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.card-icon {
+  font-size: 14px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Projects grid — 2 columns */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Work grid — 5 columns */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+
+/* ============================================================
+   9. Image / Figma Placeholders
+   ============================================================ */
+
+.placeholder-image,
+.placeholder-figma {
+  width: 100%;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.placeholder-image span,
+.placeholder-figma span {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+}
+
+.placeholder-image.wide,
+.placeholder-figma.wide {
+  min-height: 320px;
+}
+
+
+/* ============================================================
+   10. Terminal Sequence
+   ============================================================ */
+
+#terminal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity var(--fade);
+}
+
+#terminal.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.terminal-block {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 2;
+  text-align: left;
+}
+
+.terminal-line {
+  display: block;
+  color: var(--text-secondary);
+  white-space: pre;
+}
+
+.terminal-line.done {
+  color: var(--text-primary);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--text-secondary);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ============================================================
+   11. Welcome Screen
+   ============================================================ */
+
+#welcome {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--fade);
+  padding: 80px 24px;
+}
+
+#welcome.visible {
+  opacity: 1;
+}
+
+#welcome.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.welcome-inner {
+  max-width: 560px;
+  width: 100%;
+}
+
+.welcome-role {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.welcome-name {
+  font-size: var(--text-hero);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.welcome-props {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.welcome-props p {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.email-confirm {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.email-confirm.visible {
+  opacity: 1;
+}
+
+
+/* ============================================================
+   12. Portfolio Page
+   ============================================================ */
+
+#portfolio {
+  opacity: 0;
+  transition: opacity var(--fade);
+  padding-top: 52px; /* nav height offset */
+}
+
+#portfolio.visible {
+  opacity: 1;
+}
+
+/* Portfolio header */
+.portfolio-header {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 64px;
+}
+
+.portfolio-header .header-role {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.portfolio-header .header-name {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+
+.portfolio-header .header-props {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.portfolio-header .header-props p {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Portfolio sections */
+.portfolio-section {
+  padding-bottom: 72px;
+}
+
+.portfolio-section + .portfolio-section {
+  padding-top: 0;
+}
+
+
+/* ============================================================
+   13. Project Pages
+   ============================================================ */
+
+.project-page {
+  padding-top: 52px; /* nav height offset */
+}
+
+.project-hero {
+  padding: 72px 0 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 64px;
+}
+
+.project-title {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.project-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid var(--border);
+}
+
+.project-meta-item:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.project-meta-label {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.project-meta-value {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* Project section */
+.project-section {
+  padding-bottom: 64px;
+}
+
+.project-section-content {
+  padding-top: 8px;
+}
+
+.project-section-content p {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.project-section-content p:last-child {
+  margin-bottom: 0;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin-top: 48px;
+  margin-bottom: 80px;
+  transition: color var(--transition);
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.back-link::before {
+  content: '←';
+}
+
+
+/* ============================================================
+   14. Footer
+   ============================================================ */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  margin-top: 0;
+}
+
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-text {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   15. Utility Classes
+   ============================================================ */
+
+.opacity-0   { opacity: 0; }
+.opacity-1   { opacity: 1; }
+.hidden      { display: none !important; }
+.flex        { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-8       { gap: 8px; }
+.gap-12      { gap: 12px; }
+.gap-16      { gap: 16px; }
+.gap-24      { gap: 24px; }
+.mt-8        { margin-top: 8px; }
+.mt-16       { margin-top: 16px; }
+.mt-24       { margin-top: 24px; }
+.mt-32       { margin-top: 32px; }
+.mt-48       { margin-top: 48px; }
+.mt-64       { margin-top: 64px; }
+.mb-8        { margin-bottom: 8px; }
+.mb-16       { margin-bottom: 16px; }
+.mb-24       { margin-bottom: 24px; }
+.mb-32       { margin-bottom: 32px; }
+.mb-48       { margin-bottom: 48px; }
+.mb-64       { margin-bottom: 64px; }
+
+
+/* ============================================================
+   16. Responsive Breakpoints
+   ============================================================ */
+
+/* Tablet: 768–1024px */
+@media (max-width: 1024px) {
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: <768px */
+@media (max-width: 767px) {
+  :root {
+    --text-hero: 44px;
+  }
+
+  .welcome-name {
+    font-size: 44px;
+  }
+
+  .portfolio-header .header-name {
+    font-size: 32px;
+  }
+
+  .project-title {
+    font-size: 32px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .projects-grid,
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .project-meta-item {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer .container {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

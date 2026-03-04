@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sebastian Bosman — Entrepreneurial Senior Product Manager. Portfolio of product work across web, mobile, and AI.">
+  <title>Sebastian Bosman — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       Terminal Boot Sequence
+       ============================================================ -->
+  <div id="terminal" aria-hidden="true">
+    <div class="terminal-block" id="terminal-block"></div>
+  </div>
+
+
+  <!-- ============================================================
+       Nav (shared — sits behind welcome, revealed with portfolio)
+       ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand" id="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="#projects" data-section="projects">Projects</a>
+        <a href="#work" data-section="work">Work</a>
+        <a href="#contact" data-section="contact" id="nav-contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       Welcome Screen
+       ============================================================ -->
+  <div id="welcome">
+    <div class="welcome-inner">
+      <p class="welcome-role">Entrepreneurial Senior Product Manager</p>
+      <h1 class="welcome-name">Sebastian Bosman</h1>
+
+      <div class="welcome-props">
+        <p>+ 4-year track record scaling B2C web, mobile and AI products</p>
+        <p>+ 10 years of 0-1 experience building, testing, marketing and selling</p>
+        <p>+ Specialist in the electronic dance music industry</p>
+        <p>+ Strategic. Curious. Empathetic. Builder.</p>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btn-view-portfolio">View Portfolio</button>
+        <button class="btn btn-outline" id="btn-get-in-touch">
+          Get in touch
+          <span class="email-confirm" id="email-confirm-welcome" aria-live="polite">Email copied ✓</span>
+        </button>
+        <button class="btn btn-outline" id="btn-linkedin-welcome">View LinkedIn</button>
+        <a href="assets/cv/Sebastian_Bosman_CV_2026.pdf" download class="btn btn-outline">Download CV</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       Portfolio Page
+       ============================================================ -->
+  <div id="portfolio">
+
+    <!-- Portfolio Header -->
+    <section class="portfolio-header">
+      <div class="container">
+        <p class="header-role">Entrepreneurial Senior Product Manager</p>
+        <h2 class="header-name">Sebastian Bosman</h2>
+
+        <div class="header-props">
+          <p>+ 4-year track record scaling B2C web, mobile and AI products</p>
+          <p>+ 10 years of 0-1 experience building, testing, marketing and selling</p>
+          <p>+ Specialist in the electronic dance music industry</p>
+          <p>+ Strategic. Curious. Empathetic. Builder.</p>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline" id="btn-get-in-touch-portfolio">
+            Get in touch
+            <span class="email-confirm" id="email-confirm-portfolio" aria-live="polite">Email copied ✓</span>
+          </button>
+          <button class="btn btn-outline" id="btn-linkedin-portfolio">View LinkedIn</button>
+          <a href="assets/cv/Sebastian_Bosman_CV_2026.pdf" download class="btn btn-outline">Download CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="portfolio-section">
+      <div class="container">
+        <div class="section-label">
+          <span>Projects</span>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="projects-grid">
+
+          <a href="projects/vibe-coding.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">Vibe Coding — IOnlyListenToVinyl</span>
+            </div>
+          </a>
+
+          <a href="projects/ai-agent.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">AI Agent — Automated Content</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- My Work Section -->
+    <section id="work" class="portfolio-section">
+      <div class="container">
+        <div class="section-label">
+          <span>My Work</span>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="work-grid">
+
+          <a href="projects/nft-marketplace.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">NFT Marketplace App — Momint</span>
+            </div>
+          </a>
+
+          <a href="projects/client-dashboard.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">Client Dashboard — Momint</span>
+            </div>
+          </a>
+
+          <a href="projects/web3-wallet.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">Web3 Wallet — Momint</span>
+            </div>
+          </a>
+
+          <a href="projects/momint-website.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">Website — Momint</span>
+            </div>
+          </a>
+
+          <a href="projects/braai-tool.html" class="card">
+            <div class="card-thumb"></div>
+            <div class="card-label">
+              <span class="card-icon">□</span>
+              <span class="card-title">TBT — The Braai Tool</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact anchor (for nav link) -->
+    <div id="contact"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <span class="footer-text">Sebastian Bosman</span>
+        <span class="footer-text">Built with Claude Code + GitHub</span>
+      </div>
+    </footer>
+
+  </div><!-- /#portfolio -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web3 Wallet — Momint. A product case study by Sebastian Bosman.">
+  <title>Web3 Wallet — Sebastian Bosman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body class="project-page">
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html?view=portfolio" class="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="../index.html?view=portfolio">← Portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Project Hero -->
+  <div class="container">
+
+    <header class="project-hero">
+      <h1 class="project-title">Web3 Wallet — Momint</h1>
+      <p class="project-description">Designing an embedded wallet experience that made blockchain asset ownership invisible — removing the technical barrier that was preventing mainstream users from completing their first NFT purchase.</p>
+
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <span class="project-meta-label">Role</span>
+          <span class="project-meta-value">Product Manager</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Company</span>
+          <span class="project-meta-value">Momint</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2022–2023</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Platform</span>
+          <span class="project-meta-value">Mobile App</span>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- 1. Overview -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>Wallet setup was one of the most significant drop-off points in the Momint purchase funnel. New users who wanted to buy an NFT were required to create or connect a crypto wallet before completing their first transaction — a process that was unfamiliar, intimidating, and easy to abandon.</p>
+        <p>This project covers the design of an embedded wallet solution that removed the explicit wallet setup step for new users, handling key management behind the scenes while keeping the user in control of their assets. The goal was to make buying an NFT feel as simple as buying anything else online.</p>
+        <div class="placeholder-image wide mt-24">
+          <span>[ Image placeholder ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2. My Role -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>My Role</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>I led the product definition for the wallet redesign, working closely with the CTO on the technical architecture and with a product designer on the user-facing experience. This was one of the more technically complex projects I managed at Momint — it required a detailed understanding of the underlying blockchain infrastructure to make good product decisions.</p>
+        <p>I was responsible for defining the user experience model, the key management approach from a user perspective, the trust and transparency requirements, and the migration path for existing users who had already set up external wallets.</p>
+      </div>
+    </section>
+
+
+    <!-- 3. Background -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Background</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>Momint's original wallet model required users to either connect an existing MetaMask or similar external wallet, or to create a new one through a separate app. For users already in the crypto ecosystem, this was familiar. For the mainstream audience Momint was targeting, it was a significant barrier — many users did not know what a wallet was, why they needed one, or how to set it up safely.</p>
+        <p>Funnel data confirmed the problem: wallet setup was the step with the highest abandonment rate in the entire purchase flow. Solving it was not optional if Momint was going to grow beyond its existing crypto-native user base.</p>
+        <div class="placeholder-image mt-24">
+          <span>[ Image placeholder ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. Understanding the Problem -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Understanding the Problem</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>The problem had two dimensions. The first was conceptual: users did not understand what a wallet was or why they needed one. The second was procedural: even users who understood the concept found the setup process — seed phrases, private keys, browser extensions — confusing and anxiety-inducing.</p>
+        <p>The design challenge was to solve both without compromising on the security properties that make blockchain ownership meaningful. Any solution that simply hid the complexity without maintaining genuine user control was not acceptable — it had to be trustworthy, not just simple.</p>
+        <div class="image-grid mt-24">
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 5. Understanding the User -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Understanding the User</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>We ran ten user interviews focused specifically on the wallet experience, segmented into three groups: users who had successfully set up a wallet and completed a purchase, users who had started wallet setup and abandoned, and users who had never attempted setup at all.</p>
+        <p>The abandonment group was the most informative. Their reasons for stopping were consistent: confusion about what a seed phrase was, fear of doing something wrong and losing access to their assets, and a feeling that the process was designed for people with more technical knowledge than they had. None of them felt the Momint product had prepared them for what the setup process would require.</p>
+        <div class="placeholder-image wide mt-24">
+          <span>[ Image placeholder ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6. Affinity Mapping -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Affinity Mapping</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>Interview findings were mapped into clusters: conceptual confusion (what is a wallet), procedural anxiety (fear of making a mistake), trust deficit (not confident the platform would protect their assets), and recovery concern (what happens if I lose access). Each cluster had direct design implications.</p>
+        <p>The trust and recovery clusters were the most consequential. Users needed to feel that their assets were safe and that there was a clear path to recover access if something went wrong. Any design that glossed over these concerns would not land with the target audience.</p>
+        <div class="placeholder-figma wide mt-24">
+          <span>[ Figma embed ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 7. Product Vision & Solution -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Product Vision &amp; Solution</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>The vision was a wallet that new users never had to think about — created automatically on account signup, funded and managed through familiar payment methods, with the technical layer entirely abstracted. Power users and existing crypto-native users retained the ability to connect external wallets if preferred.</p>
+        <p>The solution used a custodial wallet approach for new users, with a clear upgrade path to non-custodial key management for users who wanted full ownership. The onboarding flow was redesigned to remove all wallet-specific language from the purchase path — users simply created an account, added a payment method, and bought. The wallet existed in the background.</p>
+        <p>A dedicated wallet section in the app allowed users to view their assets, understand what custody meant, and initiate a self-custody migration when ready. All language in this section was tested for comprehension with non-technical users before shipping.</p>
+        <div class="image-grid mt-24">
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 8. Wireframes & Design Iterations -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Wireframes &amp; Design Iterations</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>The wireframe process was extensive — this was a high-stakes feature where errors in the UX design could genuinely result in users losing access to assets. We ran four rounds of design iteration, each including at least one round of user testing with non-technical participants.</p>
+        <p>Key design decisions that were validated through testing: the decision to use "collection" rather than "wallet" as the primary label in the UI; the placement and phrasing of the custody explanation; the design of the self-custody upgrade flow; and the recovery options presented to users who lost access to their account.</p>
+        <div class="placeholder-figma wide mt-24">
+          <span>[ Figma embed ]</span>
+        </div>
+        <div class="image-grid mt-16">
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+          <div class="placeholder-image">
+            <span>[ Image placeholder ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 9. Developer Handover -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Developer Handover</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>Handover for this project was significantly more complex than a typical feature. The PRD covered not just the UI specification but the full wallet lifecycle — creation, funding, transfer, recovery, and self-custody migration — with explicit security requirements for each stage.</p>
+        <p>I worked with the CTO to produce a joint product-engineering specification document that covered the technical architecture alongside the user experience requirements. This reduced ambiguity during the build and ensured that product constraints were understood alongside engineering ones.</p>
+        <div class="placeholder-image mt-24">
+          <span>[ Image placeholder ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 10. Production Prototype -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Production Prototype</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>The embedded wallet shipped in stages, beginning with new user account creation and the revised purchase flow. The impact on conversion was measurable — users who signed up after the change completed first purchases at a higher rate than the cohort prior to the change.</p>
+        <p>The self-custody migration feature shipped in a follow-on sprint and was used by a small but engaged subset of users who wanted full ownership of their keys. The ability to offer both options — simple custody for new users, full ownership for advanced users — proved to be the right balance for Momint's audience at that stage of the product.</p>
+        <div class="placeholder-figma wide mt-24">
+          <span>[ Figma embed ]</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Back to Portfolio -->
+    <a href="../index.html?view=portfolio" class="back-link">Back to Portfolio</a>
+
+  </div><!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">Sebastian Bosman</span>
+      <span class="footer-text">Built with Claude Code + GitHub</span>
+    </div>
+  </footer>
+
+</body>
+</html>
