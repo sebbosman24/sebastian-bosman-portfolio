@@ -37,29 +37,20 @@
 
 
   <!-- ============================================================
-       Welcome Screen
+       Welcome Modal (Phase 3)
        ============================================================ -->
   <div id="welcome">
-    <div class="welcome-inner">
-      <p class="welcome-role">Entrepreneurial Senior Product Manager</p>
-      <h1 class="welcome-name">Sebastian Bosman</h1>
-
-      <div class="welcome-props">
+    <div class="modal-card">
+      <h1 class="modal-heading">Sebastian Bosman</h1>
+      <p class="modal-subline">Entrepreneurial Senior Product Manager</p>
+      <div class="modal-divider"></div>
+      <div class="modal-props">
         <p>+ 4-year track record scaling B2C web, mobile and AI products</p>
         <p>+ 10 years of 0-1 experience building, testing, marketing and selling</p>
         <p>+ Specialist in the electronic dance music industry</p>
         <p>+ Strategic. Curious. Empathetic. Builder.</p>
       </div>
-
-      <div class="btn-group">
-        <button class="btn btn-primary" id="btn-view-portfolio">View Portfolio</button>
-        <button class="btn btn-outline" id="btn-get-in-touch">
-          Get in touch
-          <span class="email-confirm" id="email-confirm-welcome" aria-live="polite">Email copied ✓</span>
-        </button>
-        <button class="btn btn-outline" id="btn-linkedin-welcome">View LinkedIn</button>
-        <a href="assets/cv/Sebastian_Bosman_CV_2026.pdf" download class="btn btn-outline">Download CV</a>
-      </div>
+      <button class="modal-cta" id="btn-view-portfolio">VIEW PORTFOLIO</button>
     </div>
   </div>
 
@@ -76,19 +67,55 @@
         <h2 class="header-name">Sebastian Bosman</h2>
 
         <div class="header-props">
-          <p>+ 4-year track record scaling B2C web, mobile and AI products</p>
-          <p>+ 10 years of 0-1 experience building, testing, marketing and selling</p>
-          <p>+ Specialist in the electronic dance music industry</p>
-          <p>+ Strategic. Curious. Empathetic. Builder.</p>
+          <div class="header-props-inner">
+            <p>+ 4-year track record scaling B2C web, mobile and AI products</p>
+            <p>+ 10 years of 0-1 experience building, testing, marketing and selling</p>
+            <p>+ Specialist in the electronic dance music industry</p>
+            <p>+ Strategic. Curious. Empathetic. Builder.</p>
+          </div>
         </div>
 
         <div class="btn-group">
-          <button class="btn btn-outline" id="btn-get-in-touch-portfolio">
+          <button class="btn btn-outline btn-pill" id="btn-get-in-touch-portfolio">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="2.5" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M1 4l6 4 6-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             Get in touch
-            <span class="email-confirm" id="email-confirm-portfolio" aria-live="polite">Email copied ✓</span>
           </button>
-          <button class="btn btn-outline" id="btn-linkedin-portfolio">View LinkedIn</button>
-          <a href="assets/cv/Sebastian_Bosman_CV_2026.pdf" download class="btn btn-outline">Download CV</a>
+          <button class="btn btn-outline btn-pill" id="btn-linkedin-portfolio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            View LinkedIn
+          </button>
+          <a href="assets/cv/Sebastian_Bosman_CV_2026.pdf" download class="btn btn-outline btn-pill">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M3 6.5L7 10.5l4-4M2 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-label">
+          <span>About</span>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="about-grid">
+          <p class="about-bio">"I'm deeply passionate about the intersection of technology, music, and human experience. Over the past decade, I've had the privilege of taking complex ideas from zero to one, navigating the ambiguities of early-stage product development, and scaling solutions that resonate with real users. Whether it's building AI-driven tools or crafting immersive digital experiences in Web3, my approach remains rooted in strategic curiosity and relentless execution."</p>
+
+          <div>
+            <p class="about-competencies-label">Core Competencies</p>
+            <div class="about-tags">
+              <span class="tag">Leadership</span>
+              <span class="tag">Business Strategy</span>
+              <span class="tag">Research</span>
+              <span class="tag">Data Analytics</span>
+              <span class="tag">UX</span>
+              <span class="tag">First Principles</span>
+              <span class="tag">A/B Testing</span>
+              <span class="tag">0→1 Building</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

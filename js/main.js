@@ -1,14 +1,18 @@
 // ─── Constants ───────────────────────────────────────────────
-const CHAR_DELAY    = 30;   // ms per character
-const LINE_PAUSE    = 300;  // ms between lines
-const DONE_PAUSE    = 600;  // ms after final line before fade
-const FADE_DURATION = 400;  // ms — matches CSS --fade
+const CHAR_DELAY    = 12;    // ms per character
+const LINE_PAUSE    = 100;   // ms between lines
+const DONE_PAUSE    = 600;   // ms after READY. before fade
+const FADE_DURATION = 400;   // ms — matches CSS --fade
 
-const TERMINAL_LINES = [
-  { text: '> initialising portfolio...',      done: false },
-  { text: '> loading projects...',            done: false },
-  { text: '> built with Claude Code + GitHub', done: false },
-  { text: '> done ✓',                         done: true  },
+const BIOS_LINES = [
+  { text: 'SEBASTIAN BOSMAN PORTFOLIO v1.26',                        ok: false },
+  { text: 'Copyright (C) 2026.',                                     ok: false },
+  { text: 'All Rights Reserved.',                                    ok: false },
+  { text: 'Built with Claude Code.',                                  ok: false },
+  { text: 'Loading portfolio assets..............................',    ok: true  },
+  { text: 'Mounting project files from GitHub....................',    ok: true  },
+  { text: 'Checking index.html...................................',    ok: true  },
+  { text: 'Compiling js/main.js.................................',     ok: true  },
 ];
 
 const EMAIL    = 'sbtngy@gmail.com';
@@ -25,28 +29,37 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function typewriteLine(lineEl, text) {
-  return new Promise(async (resolve) => {
-    for (const char of text) {
-      lineEl.textContent += char;
-      await sleep(CHAR_DELAY);
-    }
-    resolve();
+async function typewrite(el, text) {
+  for (const char of text) {
+    el.textContent += char;
+    await sleep(CHAR_DELAY);
+  }
+}
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  // Fade in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { toast.classList.add('toast-visible'); });
   });
+
+  // After 3s, fade out and remove
+  setTimeout(() => {
+    toast.classList.remove('toast-visible');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+  }, 3000);
 }
 
-function showEmailConfirm(confirmEl) {
-  confirmEl.classList.add('visible');
-  setTimeout(() => confirmEl.classList.remove('visible'), 2000);
-}
-
-function copyEmail(confirmEl) {
+function copyEmail() {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(EMAIL)
-      .then(() => showEmailConfirm(confirmEl))
-      .catch(() => showEmailConfirm(confirmEl));
+      .then(() => showToast('Email copied to clipboard'))
+      .catch(() => {});
   } else {
-    // Fallback for older browsers
     const ta = document.createElement('textarea');
     ta.value = EMAIL;
     ta.style.position = 'fixed';
@@ -55,28 +68,96 @@ function copyEmail(confirmEl) {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showEmailConfirm(confirmEl);
+    showToast('Email copied to clipboard');
   }
 }
 
-// ─── Terminal Boot Sequence ───────────────────────────────────
-async function runTerminal() {
-  for (const { text, done } of TERMINAL_LINES) {
-    const lineEl = document.createElement('span');
-    lineEl.className = 'terminal-line' + (done ? ' done' : '');
-    terminalBlock.appendChild(lineEl);
-    await typewriteLine(lineEl, text);
+// ─── Progress Bar ─────────────────────────────────────────────
+// Appends into `container`, fills over `duration` ms, then shows READY.
+async function runProgressBar(container, duration) {
+  const BAR_WIDTH = 55;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'bios-progress-wrap';
+
+  const label = document.createElement('span');
+  label.className = 'bios-progress-label';
+  label.textContent = 'Loading Sebastian Bosman Portfolio...';
+
+  const bar = document.createElement('span');
+  bar.className = 'bios-progress-bar';
+  bar.textContent = '░'.repeat(BAR_WIDTH);
+
+  wrap.appendChild(label);
+  wrap.appendChild(bar);
+  container.appendChild(wrap);
+
+  const stepDelay = duration / BAR_WIDTH;
+  for (let i = 0; i < BAR_WIDTH; i++) {
+    await sleep(stepDelay);
+    bar.textContent = '█'.repeat(i + 1) + '░'.repeat(BAR_WIDTH - i - 1);
+  }
+
+  label.textContent = 'READY.';
+  label.style.color = '#f0f0f0';
+}
+
+// ─── BIOS Boot Sequence (Phase 1) ────────────────────────────
+async function runBIOS() {
+  // Two sub-containers keep DOM order stable:
+  // linesContainer is appended first (top), progressContainer second (bottom).
+  // Both are in place before any animation starts, so concurrent writes
+  // to each container never interleave their visual positions.
+  const linesContainer    = document.createElement('div');
+  const progressContainer = document.createElement('div');
+  terminalBlock.appendChild(linesContainer);
+  terminalBlock.appendChild(progressContainer);
+
+  // Calculate exact typing duration so the bar fills in lockstep.
+  const totalTypingTime = BIOS_LINES.reduce((acc, { text }) => {
+    return acc + (text.length * CHAR_DELAY) + LINE_PAUSE;
+  }, 0);
+
+  // Start progress bar concurrently — its first await yields control
+  // back here immediately, so the typing loop begins on the same tick.
+  const progressDone = runProgressBar(progressContainer, totalTypingTime);
+
+  // Type lines into linesContainer (above the progress bar)
+  for (const { text, ok } of BIOS_LINES) {
+    const lineEl = document.createElement('div');
+    lineEl.className = 'bios-line';
+    linesContainer.appendChild(lineEl);
+
+    if (text === '') {
+      lineEl.textContent = '\u00a0';
+      await sleep(LINE_PAUSE);
+      continue;
+    }
+
+    const textSpan = document.createElement('span');
+    lineEl.appendChild(textSpan);
+    await typewrite(textSpan, text);
+
+    if (ok) {
+      const okSpan = document.createElement('span');
+      okSpan.className = 'bios-ok';
+      okSpan.textContent = 'OK';
+      lineEl.appendChild(okSpan);
+    }
+
     await sleep(LINE_PAUSE);
   }
 
+  // Typing is done; wait for bar to finish (both complete at the same time)
+  await progressDone;
+
   await sleep(DONE_PAUSE);
 
-  // Fade terminal out
+  // Fade Phase 1 out, then reveal welcome screen (Phase 3)
   terminalEl.classList.add('fade-out');
   await sleep(FADE_DURATION);
   terminalEl.style.display = 'none';
 
-  // Fade welcome screen in
   welcomeEl.classList.add('visible');
 }
 
@@ -85,6 +166,8 @@ async function showPortfolio() {
   welcomeEl.classList.add('fade-out');
   await sleep(FADE_DURATION);
   welcomeEl.style.display = 'none';
+  document.documentElement.classList.remove('no-scroll');
+  document.body.classList.remove('no-scroll');
   portfolioEl.classList.add('visible');
   window.scrollTo(0, 0);
 }
@@ -134,32 +217,18 @@ function initNavLinks() {
 
 // ─── Button Wiring ────────────────────────────────────────────
 function initButtons() {
-  // View Portfolio
   document.getElementById('btn-view-portfolio').addEventListener('click', showPortfolio);
 
-  // Get in touch — welcome
-  document.getElementById('btn-get-in-touch').addEventListener('click', () => {
-    copyEmail(document.getElementById('email-confirm-welcome'));
-  });
-
-  // Get in touch — portfolio header
   document.getElementById('btn-get-in-touch-portfolio').addEventListener('click', () => {
-    copyEmail(document.getElementById('email-confirm-portfolio'));
+    copyEmail();
   });
 
-  // Nav: Get in touch
   document.getElementById('nav-contact').addEventListener('click', (e) => {
     e.preventDefault();
-    copyEmail(document.getElementById('email-confirm-portfolio'));
+    copyEmail();
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
   });
 
-  // LinkedIn — welcome
-  document.getElementById('btn-linkedin-welcome').addEventListener('click', () => {
-    window.open(LINKEDIN, '_blank', 'noopener,noreferrer');
-  });
-
-  // LinkedIn — portfolio
   document.getElementById('btn-linkedin-portfolio').addEventListener('click', () => {
     window.open(LINKEDIN, '_blank', 'noopener,noreferrer');
   });
@@ -168,11 +237,10 @@ function initButtons() {
 // ─── Init ─────────────────────────────────────────────────────
 (async function init() {
   // Project pages share this file but don't have portfolio elements.
-  // Bail out early — project pages need no JS beyond what's inline.
   if (!terminalEl) return;
 
   if (checkViewParam()) {
-    // Skip terminal + welcome, show portfolio immediately
+    // Skip all phases, show portfolio immediately
     terminalEl.style.display = 'none';
     welcomeEl.style.display  = 'none';
     portfolioEl.classList.add('visible');
@@ -182,9 +250,12 @@ function initButtons() {
     return;
   }
 
-  // Normal flow
+  // Lock scroll during boot sequence
+  document.documentElement.classList.add('no-scroll');
+  document.body.classList.add('no-scroll');
+
   initButtons();
   initNavObserver();
   initNavLinks();
-  await runTerminal();
+  await runBIOS();
 })();

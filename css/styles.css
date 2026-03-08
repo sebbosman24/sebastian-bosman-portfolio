@@ -50,6 +50,11 @@
   padding: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -239,6 +244,7 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   font-size: var(--text-base);
   padding: 10px 20px;
   border-radius: var(--radius-btn);
@@ -248,6 +254,10 @@ ul, ol {
   white-space: nowrap;
   font-family: var(--font-main);
   line-height: 1;
+}
+
+.btn-pill {
+  border-radius: 999px;
 }
 
 .btn-primary {
@@ -276,6 +286,13 @@ ul, ol {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+/* Welcome screen CTA */
+.btn-welcome-cta {
+  width: 160px;
+  display: block;
+  margin: 0 auto;
 }
 
 
@@ -372,19 +389,34 @@ ul, ol {
 
 
 /* ============================================================
-   10. Terminal Sequence
+   10. BIOS Boot Sequence (Phase 1)
    ============================================================ */
 
 #terminal {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--bg);
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 1;
   transition: opacity var(--fade);
+}
+
+#terminal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 #terminal.fade-out {
@@ -393,29 +425,33 @@ ul, ol {
 }
 
 .terminal-block {
-  font-family: var(--font-mono);
+  font-family: 'Courier New', monospace;
   font-size: 14px;
-  line-height: 2;
+  line-height: 1.8;
   text-align: left;
+  position: relative;
+  z-index: 2;
+  width: min(640px, 90vw);
 }
 
-.terminal-line {
+.bios-line {
   display: block;
-  color: var(--text-secondary);
+  color: #f0f0f0;
   white-space: pre;
 }
 
-.terminal-line.done {
-  color: var(--text-primary);
+.bios-ok {
+  color: #f0f0f0;
 }
 
-.terminal-cursor {
+.bios-cursor {
   display: inline-block;
-  width: 8px;
-  height: 14px;
-  background: var(--text-secondary);
+  width: 9px;
+  height: 15px;
+  background: #f0f0f0;
   vertical-align: middle;
   animation: blink 1s step-end infinite;
+  margin-left: 2px;
 }
 
 @keyframes blink {
@@ -423,19 +459,56 @@ ul, ol {
   50%       { opacity: 0; }
 }
 
+.bios-progress-wrap {
+  margin-top: 12px;
+}
+
+.bios-progress-label {
+  display: block;
+  color: #f0f0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.bios-progress-bar {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #f0f0f0;
+  white-space: pre;
+}
+
 
 /* ============================================================
-   11. Welcome Screen
+   11. Welcome Modal (Phase 3)
    ============================================================ */
 
 #welcome {
-  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity var(--fade);
-  padding: 80px 24px;
+}
+
+#welcome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 #welcome.visible {
@@ -447,56 +520,112 @@ ul, ol {
   pointer-events: none;
 }
 
-.welcome-inner {
-  max-width: 560px;
-  width: 100%;
-}
-
-.welcome-role {
-  font-size: var(--text-label);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-}
-
-.welcome-name {
-  font-size: var(--text-hero);
-  font-weight: 300;
-  color: var(--text-primary);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 40px;
-}
-
-.welcome-props {
+.modal-card {
+  position: relative;
+  z-index: 2;
+  background: #0d0d0d;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  padding: 48px;
+  width: fit-content;
+  min-width: 360px;
+  max-width: 90vw;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 40px;
+  align-items: center;
+  text-align: center;
 }
 
-.welcome-props p {
+.modal-heading {
+  font-family: var(--font-main);
+  font-size: 28px;
+  font-weight: 300;
+  color: #f0f0f0;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.modal-subline {
+  font-family: var(--font-main);
+  font-size: 11px;
+  color: #f0f0f0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.modal-divider {
+  width: 100%;
+  height: 1px;
+  background: #1e1e1e;
+  margin: 24px 0;
+}
+
+.modal-props {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  width: 100%;
+  text-align: left;
+}
+
+.modal-props p {
+  font-family: var(--font-main);
   font-size: var(--text-body);
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
-.email-confirm {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-left: 4px;
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.email-confirm.visible {
-  opacity: 1;
+.modal-cta {
+  display: block;
+  width: 100%;
+  background: #f0f0f0;
+  color: #0a0a0a;
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 2px;
+  padding: 14px;
+  cursor: pointer;
 }
 
 
 /* ============================================================
-   12. Portfolio Page
+   12. Toast Notification
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+  background: #111111;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+
+.toast-visible {
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+.toast:not(.toast-visible) {
+  transition: opacity 300ms ease;
+}
+
+
+/* ============================================================
+   13. Portfolio Page
    ============================================================ */
 
 #portfolio {
@@ -512,8 +641,7 @@ ul, ol {
 /* Portfolio header */
 .portfolio-header {
   padding: 80px 0 64px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 64px;
+  margin-bottom: 0;
 }
 
 .portfolio-header .header-role {
@@ -521,29 +649,84 @@ ul, ol {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-secondary);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .portfolio-header .header-name {
-  font-size: 40px;
+  font-size: 76px;
   font-weight: 300;
   color: var(--text-primary);
   letter-spacing: -0.02em;
-  margin-bottom: 28px;
-  line-height: 1.1;
+  margin-bottom: 40px;
+  line-height: 1.05;
+  text-align: center;
 }
 
 .portfolio-header .header-props {
   display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.portfolio-header .header-props-inner {
+  display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 32px;
+  width: fit-content;
 }
 
 .portfolio-header .header-props p {
   font-size: var(--text-body);
   color: var(--text-secondary);
   line-height: 1.5;
+  text-align: left;
+}
+
+.portfolio-header .btn-group {
+  justify-content: center;
+}
+
+/* About section */
+.about-section {
+  padding: 64px 0;
+  margin-bottom: 64px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-bio {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.about-competencies-label {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 12px;
+  color: var(--text-primary);
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 999px;
+  padding: 6px 14px;
+  line-height: 1;
 }
 
 /* Portfolio sections */
@@ -738,12 +921,13 @@ ul, ol {
     --text-hero: 44px;
   }
 
-  .welcome-name {
-    font-size: 44px;
+  .portfolio-header .header-name {
+    font-size: 40px;
+    text-align: left;
   }
 
-  .portfolio-header .header-name {
-    font-size: 32px;
+  .portfolio-header .header-role {
+    text-align: left;
   }
 
   .project-title {
@@ -757,6 +941,11 @@ ul, ol {
   .projects-grid,
   .work-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .image-grid {
@@ -779,6 +968,7 @@ ul, ol {
     flex-direction: column;
     align-items: flex-start;
   }
+
 
   .site-footer .container {
     flex-direction: column;
