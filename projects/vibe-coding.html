@@ -10,6 +10,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/main.js" defer></script>
+  <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 32px;
+    }
+
+    .overview-lead {
+      font-size: 18px;
+      color: #f0f0f0;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-screenshots {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .project-screenshots img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .project-gif {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 32px;
+    }
+  </style>
 </head>
 <body class="project-page">
 
@@ -24,12 +61,18 @@
   </nav>
 
 
-  <!-- Project Hero -->
   <div class="container">
 
+    <!-- Cover Image -->
+    <img
+      src="../assets/images/Vibe%20Coding%20about.webp"
+      alt="IOnlyListenToVinyl"
+      class="project-cover"
+    >
+
+    <!-- Project Hero -->
     <header class="project-hero">
       <h1 class="project-title">Vibe Coding — IOnlyListenToVinyl</h1>
-      <p class="project-description">Designing and building a personal web app for vinyl record discovery and collection management — conceived, specced, and shipped solo using an AI-native workflow.</p>
 
       <div class="project-meta">
         <div class="project-meta-item">
@@ -52,185 +95,32 @@
     </header>
 
 
-    <!-- 1. Overview -->
+    <!-- Overview -->
     <section class="project-section">
       <div class="section-label">
-        <span>Overview</span>
+        <span>OVERVIEW</span>
         <div class="section-rule"></div>
       </div>
+
       <div class="project-section-content">
-        <p>IOnlyListenToVinyl is a personal web app built to scratch a genuine itch: a better way to discover new vinyl records based on what I already love, and to track what I own, want, and have listened to. The project was also an experiment in solo AI-native product development — from initial concept through to a working prototype.</p>
-        <p>This case study covers the thinking behind the product, the process used to define and build it, and what I learned about shipping as a solo PM-builder using AI tooling throughout.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
+        <p class="overview-lead">It's definitely ironic that I work in music tech and have recently felt the urge to experience human curation.</p>
+        <p>As a visual person, my favourite place to experience this is YouTube and taking it a step further, vinyl only DJ sets.</p>
+        <p>I started to notice others also appreciate human curation, so I built I Only Listen To Vinyl - a curated portal of vinyl only DJ sets.</p>
+
+        <div class="project-screenshots">
+          <img src="../assets/images/Vibe%20Coding%20Comment%201.png" alt="" loading="lazy">
+          <img src="../assets/images/Vibe%20Coding%20Comment%202.png" alt="" loading="lazy">
+          <img src="../assets/images/Vibe%20Coding%20Comment%203.png" alt="" loading="lazy">
+          <img src="../assets/images/Vibe%20Coding%20Frame%20148.png" alt="" loading="lazy">
         </div>
+
+        <img
+          src="../assets/images/Untitled%20Design%20Custom%20Video.gif"
+          alt=""
+          class="project-gif"
+        >
       </div>
     </section>
-
-
-    <!-- 2. My Role -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>My Role</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>This was a solo project. I owned every part of the process: product definition, user research (self and adjacent), information architecture, visual design direction, and technical scoping. I used AI tooling to accelerate the build, acting as the decision-maker and quality bar throughout.</p>
-        <p>The project was deliberately structured as a PM would run a team sprint — with a written spec, defined acceptance criteria, and a deliberate build order — to test whether that discipline holds when applied to personal work.</p>
-      </div>
-    </section>
-
-
-    <!-- 3. Background -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Background</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>I have been collecting vinyl for several years and found the existing tools — Discogs, Rate Your Music — useful for cataloguing but poor at helping me discover what to buy next based on my actual taste. Most recommendation engines optimise for popularity, not personal preference depth.</p>
-        <p>The idea for IOnlyListenToVinyl came from a simple frustration: I wanted to type in a record I loved and get back five records I would almost certainly also love — not a list of the bestsellers in the same genre.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 4. Understanding the Problem -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the Problem</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The core problem was discovery friction: the gap between hearing something you love and finding the next thing you will love is larger than it should be, especially in the vinyl-specific context where streaming services cannot tell you what is actually available to buy.</p>
-        <p>A secondary problem was collection sprawl: want lists scattered across apps, purchase history in emails, and listening notes in Notes app. There was no single place that held the full picture of what I owned, what I wanted, and what I had listened to recently.</p>
-        <p>I framed the product as a tool that solved both: a smart discovery layer on top of a lightweight personal collection manager.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 5. Understanding the User -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the User</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>I was the primary user, which made the initial research efficient but required deliberate effort to avoid building purely for myself. I interviewed four other regular vinyl buyers to pressure-test whether the problems I was solving were shared.</p>
-        <p>The conversations confirmed the discovery problem was widely felt. The collection management problem was more varied — some people had robust systems already; others were as disorganised as I was. This shaped the decision to make discovery the primary value proposition and collection management a lighter supporting feature.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 6. Affinity Mapping -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Affinity Mapping</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>After the interviews I mapped findings into a simple affinity diagram covering: discovery pain points, collection management habits, trust signals when buying, and what made a recommendation feel credible versus generic.</p>
-        <p>The key insight from this exercise was that credibility in music recommendation comes from specificity — people trusted recommendations that referenced concrete shared references, not broad genre labels. This informed how the app surfaces its suggestions.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 7. Product Vision & Solution -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Product Vision &amp; Solution</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The product vision was a tool that felt like a knowledgeable friend who knows your collection — one who can say "if you love that, you need to hear this" with real specificity. Minimal UI, fast interactions, no algorithm opacity.</p>
-        <p>The v1 solution focused on three screens: a search and discovery view where you enter a record you love and receive curated recommendations with context; a collection view where you log owned records and tag listening status; and a want list that persists across sessions.</p>
-        <p>The technical approach used the Discogs API for catalogue data and a recommendation layer built on top of genre, label, year, and personnel metadata — with the ability to weight results toward less well-known records.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 8. Wireframes & Design Iterations -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Wireframes &amp; Design Iterations</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>Design went through two main rounds. The first was a rough wireframe pass focused entirely on the discovery flow — how a user enters a reference record, what the results page shows, and how much context to surface per recommendation. I tested this with the same four interview participants.</p>
-        <p>The second round refined the visual treatment, tightened the collection management interaction model, and resolved several edge cases around records with no Discogs match. The final design was intentionally spare — the music should be the focus, not the interface.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-        <div class="image-grid mt-16">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 9. Developer Handover -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Developer Handover</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>As a solo build, "developer handover" meant writing a spec detailed enough that I could hand it to an AI coding assistant and get back working code with minimal back-and-forth. This required the same rigour as a real handover — clear acceptance criteria, annotated designs, and explicit edge case handling.</p>
-        <p>The discipline of writing a proper spec before building proved its value: the AI generated fewer wrong assumptions when given precise context. Sections where I was vague in the spec required the most iteration to get right.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 10. Production Prototype -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Production Prototype</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The working prototype was completed and deployed in 2024. The core discovery flow works end to end: enter a record, receive recommendations with rationale, save to want list. Collection management is functional at a basic level.</p>
-        <p>The project confirmed the value of applying PM discipline to personal builds. The spec-first approach produced a better result faster than previous personal projects where I had started building without a clear plan. It also produced a compelling demonstration of what an AI-native PM workflow looks like in practice.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Back to Portfolio -->
-    <a href="../index.html?view=portfolio" class="back-link">Back to Portfolio</a>
 
   </div><!-- /.container -->
 
