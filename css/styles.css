@@ -351,10 +351,10 @@ ul, ol {
   gap: 16px;
 }
 
-/* Work grid — 5 columns */
+/* Work grid — 2 columns (matches projects grid) */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
@@ -748,9 +748,9 @@ ul, ol {
 }
 
 .project-hero {
-  padding: 72px 0 48px;
+  padding: 40px 0 24px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 .project-title {
@@ -759,14 +759,14 @@ ul, ol {
   color: var(--text-primary);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .project-description {
   font-size: var(--text-body);
   color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .project-meta {
@@ -907,7 +907,7 @@ ul, ol {
 /* Tablet: 768–1024px */
 @media (max-width: 1024px) {
   .work-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .projects-grid {

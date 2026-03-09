@@ -10,6 +10,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/main.js" defer></script>
+  <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .tbt-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .tbt-badge {
+      background: #1a1a1a;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+.section-image-full {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+
+    .section-images-stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .section-images-stacked img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body class="project-page">
 
@@ -24,212 +72,118 @@
   </nav>
 
 
-  <!-- Project Hero -->
   <div class="container">
 
+    <!-- Cover Image -->
+    <img
+      src="../assets/images/banner%20image%20TBT.webp"
+      alt="TBT — The Braai Tool"
+      class="project-cover"
+    >
+
+    <!-- Project Hero -->
     <header class="project-hero">
       <h1 class="project-title">TBT — The Braai Tool</h1>
-      <p class="project-description">Co-founding and building a patented physical product from initial concept through to manufacture, retail distribution, and sale — a 0-to-1 journey in hardware entrepreneurship.</p>
 
       <div class="project-meta">
         <div class="project-meta-item">
-          <span class="project-meta-label">Role</span>
-          <span class="project-meta-value">Co-Founder / Product Lead</span>
-        </div>
-        <div class="project-meta-item">
           <span class="project-meta-label">Company</span>
-          <span class="project-meta-value">Personal / Co-Founded</span>
+          <span class="project-meta-value">Insert Cool Name</span>
         </div>
         <div class="project-meta-item">
           <span class="project-meta-label">Year</span>
-          <span class="project-meta-value">2015–2018</span>
+          <span class="project-meta-value">2014</span>
         </div>
         <div class="project-meta-item">
-          <span class="project-meta-label">Platform</span>
-          <span class="project-meta-value">Physical Product</span>
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Physical product + e-commerce store &amp; distribution</span>
         </div>
       </div>
     </header>
 
 
-    <!-- 1. Overview -->
+    <!-- Overview -->
+    <section class="project-section">
+      <div class="project-section-content">
+        <p>TBT – The Braai Tool is a multifunctional braai utensil that aims to clear the clutter of our cutlery drawers. In a year (2014) when the world's design eyes have been fixed upon Cape Town, the design team at Insert Cool Name have designed, developed and marketed a product around one of South Africa's favourite rituals, braai'ing.</p>
+
+        <div class="tbt-badges">
+          <div class="tbt-badge">8000 units sold</div>
+          <div class="tbt-badge">Award winning design</div>
+          <div class="tbt-badge">Patent protected</div>
+        </div>
+
+        <img
+          src="../assets/images/image%201%20TBT.webp"
+          alt="TBT product overview"
+          class="section-image-full"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+
+    <!-- The Problem -->
     <section class="project-section">
       <div class="section-label">
-        <span>Overview</span>
+        <span>The Problem</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>The Braai Tool was a physical product co-founded and built from scratch — from an original idea through patent filing, prototyping, manufacture, packaging, retail negotiation, and eventual sale of the business. The product was a multi-function tool designed specifically for the South African braai culture, solving a problem that existing products in the category had not addressed.</p>
-        <p>This case study covers the full journey: how the product was conceived, validated, designed, manufactured, and brought to market. It is the project that most directly shaped how I think about product development — because the feedback loops are slower, the costs of mistakes are real, and you cannot ship a patch.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
+        <p>TBT was born out of the problem that our cutlery drawers at home are filled with single function utensils which function poorly and are now outdated with little to no innovation seen in recent years. TBT aims to solve this problem by incorporating 5 key braai'ing utensils into one highly functional, sleek and magical product. TBT achieves its multiple functions through the use of its now patented magnetic hinge and groove system. It is in this system that the magic of TBT lies.</p>
+      </div>
+    </section>
+
+
+    <!-- The Solution -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>The Solution</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p>By being able to break TBT into two elements the user is allowed the possibility to make use of the; knife, fork, spatula and bottle opener whilst when magnetically combine the magnetic hinge and groove system mimics the action of a tensioned spring.</p>
+
+        <div class="image-grid">
+          <img src="../assets/images/image%203%20TBT.webp" alt="" loading="lazy" style="width:100%;border-radius:8px;">
+          <img src="../assets/images/image%204%20TBT.webp" alt="" loading="lazy" style="width:100%;border-radius:8px;">
         </div>
       </div>
     </section>
 
 
-    <!-- 2. My Role -->
+    <!-- Materials -->
     <section class="project-section">
       <div class="section-label">
-        <span>My Role</span>
+        <span>Materials</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>I co-founded The Braai Tool with a business partner and led the product and commercial side of the venture. My responsibilities covered the initial product concept, the patent process, the design and prototyping iterations, the manufacturer selection and relationship, the retail pitch, and the marketing and sales strategy.</p>
-        <p>This was true 0-to-1 work — there was no playbook, no team, and no existing infrastructure to build on. Every function had to be created from scratch with the resources available to two people running a startup on a tight budget.</p>
-      </div>
-    </section>
+        <p>TBT is made of the highest quality materials to ensure it meets SABS standards and to maximise its durability. The handle is machined from rose wood. The Stainless Steel is food grade (304), which is long lasting and meets the requirements set by the SABS whilst the steel rivets join the two elements much like a quality steak knife. Inside TBT are four Neo magnets, which are used to intuitively join the two halves together without the user having to align them; the polarity of the magnets ensures this.</p>
 
-
-    <!-- 3. Background -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Background</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The braai is a central social ritual in South African culture — the equivalent of a barbecue, but with its own traditions, culture, and dedicated product category. Despite this, the tools available for braai-ing were either generic barbecue accessories from international brands or low-quality local alternatives. There was a gap for a premium, purpose-built braai tool that understood the specific requirements of the activity.</p>
-        <p>The original idea came from a genuine frustration at a braai. The solution was conceived on the spot, sketched out that evening, and had become a serious business plan within a month. This is the kind of origin story that is easy to romanticise but harder to execute — the case study tries to document both honestly.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
+        <div class="section-images-stacked">
+          <img src="../assets/images/image%205%20TBT.webp" alt="" loading="lazy">
+          <img src="../assets/images/image%206%20TBT.webp" alt="" loading="lazy">
         </div>
       </div>
     </section>
 
 
-    <!-- 4. Understanding the Problem -->
+    <!-- Award Winning Design -->
     <section class="project-section">
       <div class="section-label">
-        <span>Understanding the Problem</span>
+        <span>Award Winning Design</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>The core problem was tool proliferation: a typical braai required multiple separate tools — a poker, a grid lifter, a brush, tongs — none of which were designed to work together or store conveniently. The result was cluttered, inefficient, and aesthetically unpleasant.</p>
-        <p>The design problem was to combine the functions most needed at a braai into a single, well-made tool that was comfortable to use, easy to clean, and visually appealing enough to be left out on a table rather than hidden away. The patent was filed around the specific mechanical solution we developed to achieve this combination.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
+        <p>The Braai Tool has subsequently won first place in the annual Cape Peninsula University of Technology's Student Innovation Competition, IDEA CREATE, for 2014. As well as having been invited to exhibit at DESIGN INDABA 2015, Decorex 2015, OPEN DESIGN, THINKERS &amp; MAKERS, TRANSFORMING CITIES.</p>
+
+        <div class="image-grid">
+          <img src="../assets/images/image%207%20TBT.webp" alt="" loading="lazy" style="width:100%;border-radius:8px;">
+          <img src="../assets/images/image%208%20TBT.webp" alt="" loading="lazy" style="width:100%;border-radius:8px;">
         </div>
       </div>
     </section>
-
-
-    <!-- 5. Understanding the User -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the User</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>User research for a physical product is fundamentally different from digital product research — you can observe people using a prototype in the actual context of use, which produces a quality of insight that is very hard to replicate in an interview. We took early prototypes to real braais and watched people use them, ask questions, and react.</p>
-        <p>The most useful research came from watching people who had not been briefed on the product pick it up and try to use it. Their instinctive interactions revealed which affordances were clear and which were confusing. Several design decisions were made directly based on these observations — particularly around the grip design and the transition between tool configurations.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 6. Affinity Mapping -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Affinity Mapping</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>After the early prototype research sessions we mapped findings into categories: functional requirements (what it needed to do), ergonomic requirements (how it needed to feel), aesthetic requirements (how it needed to look), and commercial requirements (what price point and packaging were viable).</p>
-        <p>The tension between functional completeness and manufacturing cost was the dominant theme of the mapping session. Adding functions added cost; removing them reduced the product's differentiation. Working through this tension explicitly — rather than trying to hold it in our heads — produced the feature set we took into the final design phase.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 7. Product Vision & Solution -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Product Vision &amp; Solution</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The vision was a product that felt like it had always existed — something people would see and immediately wonder how they had managed without it. Premium materials, a considered design, and a price point that positioned it as a gift-worthy object rather than a commodity tool.</p>
-        <p>The final product combined the three most-used braai tool functions into a single patented mechanism, using stainless steel construction and a handle design that accommodated both left and right-handed users. It was packaged in a way that made it giftable — braai accessories are a significant gifting category in South Africa — and priced accordingly.</p>
-        <p>The commercial strategy focused on retail rather than direct-to-consumer, targeting the home and lifestyle retailers that already had an established braai accessory category and an existing customer base for premium products in this space.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 8. Wireframes & Design Iterations -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Wireframes &amp; Design Iterations</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The physical prototyping process went through five major iterations before we arrived at the production design. Early prototypes were rough — 3D-printed components, improvised handles — but were sufficient to test the core functional mechanic. Later prototypes used production-grade materials and were close enough to the final product to be used in retail buyer presentations.</p>
-        <p>Each prototype iteration was evaluated against the same criteria: does the core function work reliably, is it comfortable to use for an extended braai session, does it clean easily, and does it look like a premium product? The last criterion turned out to be harder to achieve than the functional ones — getting the proportions and finish to feel right took more iterations than expected.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-        <div class="image-grid mt-16">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 9. Developer Handover -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Developer Handover</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>In the context of a physical product, "developer handover" means working with a manufacturer to translate a design intent into a production specification. This involved detailed technical drawings, material specifications, tolerance requirements, and finish standards — all of which had to be communicated clearly to a manufacturer working in a different country with different assumptions about acceptable quality levels.</p>
-        <p>Managing the manufacturing relationship was one of the most demanding parts of the project. Quality control across a production run required physical inspection of samples at multiple stages, clear documentation of rejection criteria, and a willingness to delay launch when early samples did not meet spec. We delayed once — the right decision, given the alternative.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 10. Production Prototype -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Production Prototype</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The Braai Tool reached retail in 2016 and was stocked by several major South African home and lifestyle retailers. It was well-received by buyers and performed strongly as a gifting product, particularly around Father's Day and the summer braai season. The patent was granted and the business was subsequently sold.</p>
-        <p>The project taught me things about product development that I have not found a comparable way to learn in digital product work: the irreversibility of production decisions, the importance of getting the specification right before committing to manufacture, and what it feels like to hold something in your hands that did not exist three years before. These experiences directly inform how I approach product work today.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Back to Portfolio -->
-    <a href="../index.html?view=portfolio" class="back-link">Back to Portfolio</a>
 
   </div><!-- /.container -->
 
