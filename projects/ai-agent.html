@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI Agent — Automated Content. A product case study by Sebastian Bosman.">
-  <title>AI Agent — Sebastian Bosman</title>
+  <meta name="description" content="Portfolio Build — Sebastian Bosman.">
+  <title>Portfolio Build — Sebastian Bosman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -28,208 +28,49 @@
   <div class="container">
 
     <header class="project-hero">
-      <h1 class="project-title">AI Agent — Automated Content</h1>
-      <p class="project-description">Designing and deploying an autonomous content pipeline that drafts, reviews, and publishes social content — reducing manual effort while maintaining editorial quality.</p>
+      <h1 class="project-title">Portfolio Build</h1>
 
       <div class="project-meta">
         <div class="project-meta-item">
-          <span class="project-meta-label">Role</span>
-          <span class="project-meta-value">Product Manager / Builder</span>
-        </div>
-        <div class="project-meta-item">
-          <span class="project-meta-label">Company</span>
+          <span class="project-meta-label">Type</span>
           <span class="project-meta-value">Personal Project</span>
         </div>
         <div class="project-meta-item">
           <span class="project-meta-label">Year</span>
-          <span class="project-meta-value">2024</span>
+          <span class="project-meta-value">2025</span>
         </div>
         <div class="project-meta-item">
           <span class="project-meta-label">Platform</span>
-          <span class="project-meta-value">AI / Automation</span>
+          <span class="project-meta-value">Web</span>
         </div>
       </div>
     </header>
 
 
-    <!-- 1. Overview -->
+    <!-- The Process -->
     <section class="project-section">
       <div class="section-label">
-        <span>Overview</span>
+        <span>The Process</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>This project was an exploration of agentic AI workflows applied to a real content production problem. The goal was to build a system that could take a topic brief and produce publish-ready social content — autonomously, consistently, and at a quality level that required minimal human review.</p>
-        <p>This case study documents how the system was designed, how the agent pipeline was structured, what broke along the way, and what the result taught me about where AI agents are genuinely useful versus where human judgement remains essential.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
+        <p>I started with a spec. Before writing a single line of code I produced a PRD defining the site architecture, design system, interaction model, and content strategy. I then wrote a CLAUDE.md file — a persistent context document that briefed my AI agent on the project, the design rules, and the build order.</p>
+        <p>From there I worked iteratively, one feature at a time. Terminal boot sequence. Welcome modal. Portfolio page. Seven project pages. Responsive layout. Deployment. Every meaningful change committed with intention. The git history tells the story of the build as clearly as this page does.</p>
+        <p>I'm not a software engineer. But I can ship.</p>
       </div>
     </section>
 
 
-    <!-- 2. My Role -->
+    <!-- Tooling -->
     <section class="project-section">
       <div class="section-label">
-        <span>My Role</span>
+        <span>Tooling</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>Solo project. I designed the agent architecture, wrote the system prompts and evaluation criteria, built the orchestration layer, and iterated on output quality over several weeks of real-world use. I also documented the failure modes and the heuristics I developed for handling them.</p>
-        <p>This was deliberately approached as a product problem, not a technical one — the interesting questions were around what the agent should do, what constraints it needed, and how to evaluate whether the output was good enough.</p>
+        <p>Claude Code · Vanilla JS, HTML, CSS · Git · GitHub · GitHub Pages · VS Code · Live Server · Google Fonts</p>
       </div>
     </section>
-
-
-    <!-- 3. Background -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Background</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The starting point was a frustration with the repetitive overhead of social content production. Creating consistent, on-brand posts across platforms is time-consuming when done manually, and the returns diminish quickly when the content becomes formulaic.</p>
-        <p>I wanted to understand whether an AI agent could handle the drafting and scheduling layer entirely, freeing up time for the more creative and strategic parts of content work. The secondary goal was to develop practical intuitions about what good agent design looks like — a skill increasingly relevant for product managers working on AI products.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 4. Understanding the Problem -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the Problem</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The core problem was quality variance. Early experiments with simple prompt-to-output pipelines produced results that were sometimes excellent and sometimes unusably generic. The challenge was not getting the agent to produce content — it was getting it to produce consistently good content without requiring heavy editing every time.</p>
-        <p>A second problem was context management: the agent needed to know about tone, audience, platform constraints, and recent content history to avoid repetition. Getting that context into the agent in a structured, reliable way was non-trivial.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 5. Understanding the User -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the User</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The primary user was myself, with a secondary consideration for small content teams or solo operators who face the same overhead. I also spoke with two other professionals who had experimented with AI content tools to understand where their experiences diverged from mine.</p>
-        <p>The common thread was that people wanted automation of the mechanical parts of content work — drafting, formatting, scheduling — while retaining control over tone, strategy, and anything that required genuine judgement. The agent needed to know where its authority ended.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 6. Affinity Mapping -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Affinity Mapping</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>I mapped the failure modes and friction points from early experiments into clusters: output quality variance, context loss between runs, tone drift over time, and the overhead of reviewing and correcting agent output. Each cluster pointed to a specific design decision in the agent architecture.</p>
-        <p>The most important insight was that the review step could not be eliminated — but it could be radically compressed. The goal shifted from "zero review" to "thirty-second review" — a meaningful reduction in effort while maintaining a human in the loop for final approval.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 7. Product Vision & Solution -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Product Vision &amp; Solution</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The vision was a content pipeline that behaved like a well-briefed junior copywriter: capable, consistent, and aware of its own limits — flagging uncertainty rather than guessing wrong.</p>
-        <p>The solution was a multi-step agent pipeline with distinct stages: brief intake, research and context retrieval, drafting, self-critique and revision, and formatted output for review. Each stage had explicit success criteria and failure conditions. The agent was instructed to surface its reasoning at the review stage, making it faster to approve or reject output.</p>
-        <p>A lightweight context store tracked recent output to prevent repetition, and a tone guide was included in every system prompt to keep voice consistent across runs.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 8. Wireframes & Design Iterations -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Wireframes &amp; Design Iterations</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The "design" in this project was primarily prompt architecture and pipeline structure rather than UI. I iterated through several versions of the agent configuration, treating each version as a design sprint: define the expected output, run the agent, evaluate the gap, adjust the design.</p>
-        <p>Key iterations included: separating the research and drafting stages (which significantly improved output quality), adding an explicit self-critique step before final output, and restructuring the brief intake format to reduce ambiguity at the start of each run.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-        <div class="image-grid mt-16">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 9. Developer Handover -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Developer Handover</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>This project did not involve a traditional developer handover — the build was handled using AI coding tools directly. Documentation took the form of a detailed system design document covering the pipeline architecture, prompt templates, context store schema, and the evaluation rubric used to assess output quality.</p>
-        <p>The documentation was written both for future maintenance and as a forcing function: writing it out clearly exposed several ambiguities in the design that required resolution before the system could run reliably.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 10. Production Prototype -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Production Prototype</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The pipeline ran in production for several months, producing content that was used with minimal editing. Review time per output dropped significantly compared to the initial prototype, and output quality was consistent enough to remove most of the hesitation around publishing agent-drafted content.</p>
-        <p>The clearest output of the project was not the pipeline itself but the set of design principles I developed for agentic systems: start narrow, evaluate explicitly, keep humans in the loop at approval points, and treat prompt architecture with the same rigour as product design.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Back to Portfolio -->
-    <a href="../index.html?view=portfolio" class="back-link">Back to Portfolio</a>
 
   </div><!-- /.container -->
 
