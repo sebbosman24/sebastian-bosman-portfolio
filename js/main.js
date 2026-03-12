@@ -1,7 +1,7 @@
 // ─── Constants ───────────────────────────────────────────────
 const CHAR_DELAY    = 12;    // ms per character
 const LINE_PAUSE    = 100;   // ms between lines
-const DONE_PAUSE    = 600;   // ms after READY. before fade
+const DONE_PAUSE    = 2600;  // ms after READY. before fade
 const FADE_DURATION = 400;   // ms — matches CSS --fade
 
 const BIOS_LINES = [
@@ -153,12 +153,15 @@ async function runBIOS() {
 
   await sleep(DONE_PAUSE);
 
-  // Fade Phase 1 out, then reveal welcome screen (Phase 3)
+  // Fade Phase 1 out, then reveal portfolio directly
   terminalEl.classList.add('fade-out');
   await sleep(FADE_DURATION);
   terminalEl.style.display = 'none';
 
-  welcomeEl.classList.add('visible');
+  document.documentElement.classList.remove('no-scroll');
+  document.body.classList.remove('no-scroll');
+  portfolioEl.classList.add('visible');
+  window.scrollTo(0, 0);
 }
 
 // ─── Welcome → Portfolio Transition ──────────────────────────
