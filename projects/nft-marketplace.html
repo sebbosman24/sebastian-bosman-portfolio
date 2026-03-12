@@ -10,6 +10,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/main.js" defer></script>
+  <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .focus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .focus-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .focus-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body class="project-page">
 
@@ -24,17 +58,23 @@
   </nav>
 
 
-  <!-- Project Hero -->
   <div class="container">
 
+    <!-- Cover Image -->
+    <img
+      src="../assets/images/Momint_App%20banner.webp"
+      alt="NFT Marketplace App — Momint"
+      class="project-cover"
+    >
+
+    <!-- Project Hero -->
     <header class="project-hero">
       <h1 class="project-title">NFT Marketplace App — Momint</h1>
-      <p class="project-description">Redesigning the core marketplace experience to drive discovery, reduce drop-off, and increase first-time purchases on a mobile-first NFT platform.</p>
 
       <div class="project-meta">
         <div class="project-meta-item">
           <span class="project-meta-label">Role</span>
-          <span class="project-meta-value">Product Manager</span>
+          <span class="project-meta-value">Product Lead</span>
         </div>
         <div class="project-meta-item">
           <span class="project-meta-label">Company</span>
@@ -52,189 +92,97 @@
     </header>
 
 
-    <!-- 1. Overview -->
+    <!-- The Challenge -->
     <section class="project-section">
       <div class="section-label">
-        <span>Overview</span>
+        <span>The Challenge</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>Momint was a South African NFT marketplace focused on making digital ownership accessible to a mainstream, mobile-first audience. At the time of this project, the platform had a growing creator base but was struggling to convert casual browsers into buyers.</p>
-        <p>This project covers the end-to-end product process behind a major redesign of the core marketplace experience — from discovery and browsing through to checkout and wallet management — and the decisions made along the way.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
+        <p>Momint was Africa's first NFT marketplace. The MVP had launched, users were signing up — but the product was too complex for mainstream adoption. Web2 users didn't understand NFTs, the interface was cluttered, and conversion was low.</p>
+        <p>I joined in 2022 as Product Lead to simplify the product and drive growth.</p>
       </div>
     </section>
 
 
-    <!-- 2. My Role -->
+    <!-- My Role -->
     <section class="project-section">
       <div class="section-label">
         <span>My Role</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>I led the product definition and design direction for this initiative, working directly with the CEO, engineering lead, and a product designer. I owned the problem framing, user research synthesis, feature scoping, and final prioritisation calls.</p>
-        <p>I was responsible for writing the PRD, running weekly sprint reviews, and maintaining alignment between the design team and the development squad throughout a twelve-week build cycle.</p>
+        <p>I owned the full product lifecycle — strategy, roadmap, prioritisation, and delivery — working across a team of engineers, designers, and marketers.</p>
+        <p>The brief was clear: reduce friction, increase sales, and make blockchain accessible to everyday users without dumbing it down.</p>
       </div>
     </section>
 
 
-    <!-- 3. Background -->
+    <!-- What I Focused On -->
     <section class="project-section">
       <div class="section-label">
-        <span>Background</span>
+        <span>What I Focused On</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>Momint launched during the peak of the NFT market in 2021 and had built a meaningful creator community in South Africa by early 2022. However, as the broader market cooled, it became clear that the product needed to work harder to convert interest into action.</p>
-        <p>Analytics showed that the majority of new users were reaching the marketplace, browsing two or three items, and leaving without completing a purchase. Session recordings pointed to friction in the discovery flow and confusion around the purchase and wallet setup process.</p>
-        <p>The business case was clear: improving the core purchase funnel could meaningfully increase transaction volume without requiring additional user acquisition spend.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
+        <ul class="focus-list">
+          <li>Redesigning the discovery and purchase flow to reduce drop-off for first-time buyers</li>
+          <li>Simplifying the wallet and transaction experience for Web2-native users</li>
+          <li>Introducing ERC1155 smart contract functionality allowing sellers to edit multiple NFT prices simultaneously</li>
+          <li>Improving transparency and trust signals throughout the buying journey</li>
+        </ul>
       </div>
     </section>
 
 
-    <!-- 4. Understanding the Problem -->
+    <!-- Outcome -->
     <section class="project-section">
       <div class="section-label">
-        <span>Understanding the Problem</span>
+        <span>Outcome</span>
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <p>We began by auditing the existing product against key funnel metrics. Drop-off was highest at two points: the transition from browsing to a product detail page, and the transition from "buy now" to payment confirmation.</p>
-        <p>A secondary problem was surfacing: users who had previously purchased were not returning to browse new drops. Retention was low and there was no clear re-engagement hook in the product.</p>
-        <p>We framed the core problem as: <em>how do we make the marketplace feel trustworthy, browseable, and rewarding enough to complete a first purchase — and come back for more?</em></p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
+        <p>Scaled the app from MVP to <strong>50K MAUs in 6 months</strong>. Increased new user signup completion rate by <strong>60%</strong>. Improved month-3 retention by <strong>25%</strong> through wallet redesign.</p>
+      </div>
+    </section>
+
+    <!-- Sub-projects -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Deep Dives</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="projects-grid">
+        <a href="nft-project-pages.html" class="card">
+          <div class="card-thumb"></div>
+          <div class="card-label">
+            <span class="card-icon">□</span>
+            <span class="card-title">NFT &amp; Project Pages</span>
           </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
+        </a>
+        <a href="purchasing-flow.html" class="card">
+          <div class="card-thumb"></div>
+          <div class="card-label">
+            <span class="card-icon">□</span>
+            <span class="card-title">Purchasing Flow</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 5. Understanding the User -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Understanding the User</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>We conducted twelve user interviews across three segments: users who had completed a purchase, users who had reached checkout but not completed, and users who had browsed but never reached checkout.</p>
-        <p>The research surfaced a consistent theme: most users understood what an NFT was conceptually, but did not have a clear mental model of what they were buying, why it had value, or what they could do with it after purchase. This created hesitation at every decision point in the flow.</p>
-        <p>We also identified that a subset of users were specifically interested in supporting South African artists and creators — a strong emotional hook that the product was not surfacing prominently enough.</p>
-        <div class="placeholder-image wide mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 6. Affinity Mapping -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Affinity Mapping</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>After completing the interviews, we ran an affinity mapping session with the product designer and CEO to organise findings into themes. We used a digital whiteboard to cluster observations from interview notes into groups by topic and user sentiment.</p>
-        <p>The key clusters that emerged were: trust and legitimacy signals, value clarity, creator connection, wallet complexity, and re-engagement motivations. These clusters directly informed the feature priorities we brought into the next phase.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 7. Product Vision & Solution -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Product Vision &amp; Solution</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>Based on the research, we defined a clear product direction: simplify the path to first purchase, surface creator identity throughout the experience, and give users a reason to return after buying.</p>
-        <p>The solution involved three main changes. First, a redesigned homepage feed that led with featured creators rather than a grid of items — giving users a person to connect with, not just an object to buy. Second, a simplified product detail page that answered the key questions users had before purchasing, with clear provenance, creator bio, and edition information. Third, a streamlined checkout flow that reduced the number of steps and made wallet setup a one-time, clearly explained process.</p>
-        <p>We also introduced a lightweight notifications system to alert users to new drops from creators they had previously engaged with — addressing the re-engagement gap identified in research.</p>
-        <div class="image-grid mt-24">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
+        </a>
+        <a href="edit-pricing-flow.html" class="card">
+          <div class="card-thumb"></div>
+          <div class="card-label">
+            <span class="card-icon">□</span>
+            <span class="card-title">Edit Pricing &amp; Selling Flow</span>
           </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
+        </a>
+        <a href="discovery-landing.html" class="card">
+          <div class="card-thumb"></div>
+          <div class="card-label">
+            <span class="card-icon">□</span>
+            <span class="card-title">Discovery / Landing Page</span>
           </div>
-        </div>
+        </a>
       </div>
     </section>
-
-
-    <!-- 8. Wireframes & Design Iterations -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Wireframes &amp; Design Iterations</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>We ran three rounds of design iteration across the key screens. The first round focused on information architecture — establishing the right hierarchy and flow before adding any visual treatment. Low-fidelity wireframes were validated with five users in a moderated session.</p>
-        <p>The second round introduced the visual design system and focused on the detail page and checkout flow. We tested two variants of the checkout experience with a panel of previous users and selected the one with clearer step progression.</p>
-        <p>The third round addressed feedback from internal review and engineering feasibility constraints, narrowing the scope to what could be shipped in the available sprint budget.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-        <div class="image-grid mt-16">
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-          <div class="placeholder-image">
-            <span>[ Image placeholder ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 9. Developer Handover -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Developer Handover</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>Handover was managed through a combination of a detailed PRD, annotated Figma files, and a two-hour walkthrough session with the engineering lead. All edge cases, empty states, and error conditions were specified in writing before development began.</p>
-        <p>We used a lightweight ticket structure in Linear, with each ticket referencing the relevant Figma frame and acceptance criteria. The PM was available for daily questions during the first two weeks of the build sprint.</p>
-        <p>Post-launch, I monitored implementation against spec through regular QA sessions, logging discrepancies as regression tickets where the shipped behaviour differed from the agreed specification.</p>
-        <div class="placeholder-image mt-24">
-          <span>[ Image placeholder ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 10. Production Prototype -->
-    <section class="project-section">
-      <div class="section-label">
-        <span>Production Prototype</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="project-section-content">
-        <p>The redesigned marketplace shipped to production in Q1 2023 following a staged rollout. The new homepage feed, product detail page, and checkout flow were live for all users within two weeks of the initial release.</p>
-        <p>Early results showed an improvement in checkout completion rate and a measurable increase in session depth — users were browsing more items per session before making a purchase decision. The notifications feature shipped in a follow-on sprint and contributed to a recovery in weekly active user counts.</p>
-        <div class="placeholder-figma wide mt-24">
-          <span>[ Figma embed ]</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Back to Portfolio -->
-    <a href="../index.html?view=portfolio" class="back-link">Back to Portfolio</a>
 
   </div><!-- /.container -->
 
