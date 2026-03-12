@@ -493,7 +493,12 @@ ul, ol {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--fade);
+}
+
+#welcome.visible {
+  pointer-events: auto;
 }
 
 #welcome::before {
