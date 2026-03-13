@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hank — AI-powered home buying guide for UK first-time buyers. Built by Sebastian Bosman.">
+  <title>Hank App — Sebastian Bosman</title>
+  <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    /* Phone mockup */
+    .phone-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0;
+    }
+
+    .phone-shell {
+      position: relative;
+      width: 430px;
+      background: #111;
+      border-radius: 54px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 1px #333,
+        0 0 0 3px #1a1a1a,
+        0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    /* Side buttons */
+    .phone-shell::before {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 120px;
+      width: 3px;
+      height: 36px;
+      background: #2a2a2a;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 52px 0 #2a2a2a, 0 96px 0 #2a2a2a;
+    }
+
+    .phone-shell::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 160px;
+      width: 3px;
+      height: 68px;
+      background: #2a2a2a;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 402px;
+      height: 870px;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #FAF8F5;
+    }
+
+    /* Dynamic island */
+    .phone-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 34px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .phone-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 42px;
+    }
+
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      padding: 6px 14px;
+      border: 1px solid #3a3a3a;
+      border-radius: 100px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Live badge */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid #2D9E8F44;
+      border-radius: 100px;
+      font-size: 12px;
+      color: #2D9E8F;
+      margin-top: 12px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #2D9E8F;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid #333;
+      padding-bottom: 2px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .open-link:hover {
+      color: var(--text-primary);
+      border-color: #666;
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html?view=portfolio" class="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="../index.html?view=portfolio#projects">Projects</a>
+        <a href="../index.html?view=portfolio#work">Work</a>
+        <a href="../index.html?view=portfolio#contact" id="nav-contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="project-hero">
+      <h1 class="project-title">Hank</h1>
+
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Personal Project</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2026</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Platform</span>
+          <span class="project-meta-value">Web App / PWA</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Stack</span>
+          <span class="project-meta-value">Next.js · Claude AI</span>
+        </div>
+      </div>
+
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        Live on Railway
+      </div>
+
+      <a class="open-link" href="https://hank-app-production.up.railway.app/home" target="_blank" rel="noopener noreferrer">
+        Open in new tab ↗
+      </a>
+    </header>
+
+
+    <!-- Overview -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;">
+          Hank is an AI-powered home buying guide built for UK first-time buyers. It walks users through every stage of the buying process — from assessing finances and getting a mortgage in principle, to making an offer and completing. The AI assistant, Hank, is powered by Claude (Anthropic) and provides personalised guidance throughout.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Live App -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Live App</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="phone-wrapper">
+          <div class="phone-shell">
+            <div class="phone-screen">
+              <div class="phone-island"></div>
+              <iframe
+                src="https://hank-app-production.up.railway.app/home"
+                title="Hank App"
+                loading="lazy"
+                allow="fullscreen"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Features</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>8-step interactive UK home buying roadmap with expandable steps, checklists, and video cards</li>
+          <li>AI assistant (Hank) powered by Claude — answers questions at any stage of the journey</li>
+          <li>Property tab with search, saved reviews, and offer tracking</li>
+          <li>Financial dashboard with deposit progress, LISA tracker, and live mortgage rate comparison</li>
+          <li>Paste in a Rightmove or Zoopla listing URL for instant AI property analysis</li>
+          <li>Onboarding flow capturing motivation, location, finances, and money mindset</li>
+          <li>Mobile-first PWA — 390px phone shell, feels native in browser</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Tooling -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Tooling</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="tag-row">
+          <span class="tag">Next.js 16</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Lucide React</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Process -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Process</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Wrote a detailed product spec (CLAUDE.md) covering all screens, features, and design system</li>
+          <li>Used Claude Code to run UX research agents, validate information architecture, and generate screen-by-screen builds</li>
+          <li>Iterated on navigation structure using NNG / Apple HIG / Material Design 3 principles</li>
+          <li>All third-party data (Rightmove, LISA, mortgage rates) mocked with realistic seed data — no "demo mode" label in UI</li>
+          <li>Deployed to Railway, embedded live into portfolio via iframe</li>
+        </ul>
+      </div>
+    </section>
+
+  </div><!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">Sebastian Bosman</span>
+      <span class="footer-text">Built with Claude Code + GitHub</span>
+    </div>
+  </footer>
+
+</body>
+</html>
