@@ -183,7 +183,7 @@ function checkViewParam() {
 
 // ─── Nav: Active Section via IntersectionObserver ────────────
 function initNavObserver() {
-  const sections = document.querySelectorAll('#projects, #work, #contact');
+  const sections = document.querySelectorAll('#projects, #work');
   const navLinks  = document.querySelectorAll('.nav-links a[data-section]');
 
   const observer = new IntersectionObserver((entries) => {
@@ -204,7 +204,7 @@ function initNavObserver() {
 
 // ─── Nav: Smooth scroll & brand link behaviour ────────────────
 function initNavLinks() {
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+  document.querySelectorAll('.nav-links a[href^="#"]:not(#nav-contact)').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
@@ -226,14 +226,17 @@ function initButtons() {
     copyEmail();
   });
 
-  document.getElementById('nav-contact').addEventListener('click', (e) => {
-    e.preventDefault();
-    copyEmail();
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-  });
-
   document.getElementById('btn-linkedin-portfolio').addEventListener('click', () => {
     window.open(LINKEDIN, '_blank', 'noopener,noreferrer');
+  });
+}
+
+// ─── Nav Contact: runs on all pages (portfolio + project pages) ──
+const navContact = document.getElementById('nav-contact');
+if (navContact) {
+  navContact.addEventListener('click', (e) => {
+    e.preventDefault();
+    copyEmail();
   });
 }
 

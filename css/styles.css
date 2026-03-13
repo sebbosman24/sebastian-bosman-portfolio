@@ -10,12 +10,12 @@
 
 :root {
   /* Colour tokens */
-  --bg:             #0a0a0a;
+  --bg:             #181818;
   --surface:        #111111;
   --surface-hover:  #1a1a1a;
   --border:         #1e1e1e;
   --border-hover:   #333333;
-  --text-primary:   #f0f0f0;
+  --text-primary:   #eeecea;
   --text-secondary: #888888;
   --text-muted:     #444444;
   --accent:         #ffffff;
@@ -163,7 +163,7 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(17, 17, 17, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -224,7 +224,7 @@ ul, ol {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -232,7 +232,7 @@ ul, ol {
 .section-rule {
   flex: 1;
   height: 1px;
-  background-color: var(--border);
+  background-color: #2e2e2e;
 }
 
 
@@ -244,9 +244,9 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: var(--text-base);
-  padding: 10px 20px;
+  gap: 8px;
+  font-size: 14px;
+  padding: 12px 24px;
   border-radius: var(--radius-btn);
   border: 1px solid transparent;
   cursor: pointer;
@@ -396,7 +396,7 @@ ul, ol {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: #0a0a0a;
+  background: #181818;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,19 +436,19 @@ ul, ol {
 
 .bios-line {
   display: block;
-  color: #f0f0f0;
+  color: #eeecea;
   white-space: pre;
 }
 
 .bios-ok {
-  color: #f0f0f0;
+  color: #eeecea;
 }
 
 .bios-cursor {
   display: inline-block;
   width: 9px;
   height: 15px;
-  background: #f0f0f0;
+  background: #eeecea;
   vertical-align: middle;
   animation: blink 1s step-end infinite;
   margin-left: 2px;
@@ -465,7 +465,7 @@ ul, ol {
 
 .bios-progress-label {
   display: block;
-  color: #f0f0f0;
+  color: #eeecea;
   font-family: 'Courier New', monospace;
   font-size: 14px;
   margin-bottom: 4px;
@@ -475,7 +475,7 @@ ul, ol {
   display: block;
   font-family: 'Courier New', monospace;
   font-size: 14px;
-  color: #f0f0f0;
+  color: #eeecea;
   white-space: pre;
 }
 
@@ -488,7 +488,7 @@ ul, ol {
   position: fixed;
   inset: 0;
   z-index: 150;
-  background: #0a0a0a;
+  background: #181818;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -529,7 +529,7 @@ ul, ol {
   position: relative;
   z-index: 2;
   background: #0d0d0d;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #eeecea;
   border-radius: 4px;
   padding: 48px;
   width: fit-content;
@@ -545,7 +545,7 @@ ul, ol {
   font-family: var(--font-main);
   font-size: 28px;
   font-weight: 300;
-  color: #f0f0f0;
+  color: #eeecea;
   letter-spacing: -0.01em;
   margin-bottom: 8px;
 }
@@ -553,7 +553,7 @@ ul, ol {
 .modal-subline {
   font-family: var(--font-main);
   font-size: 11px;
-  color: #f0f0f0;
+  color: #eeecea;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -584,8 +584,8 @@ ul, ol {
 .modal-cta {
   display: block;
   width: 100%;
-  background: #f0f0f0;
-  color: #0a0a0a;
+  background: #eeecea;
+  color: #181818;
   font-family: var(--font-main);
   font-size: var(--text-base);
   font-weight: 500;
@@ -604,7 +604,7 @@ ul, ol {
 
 .toast {
   position: fixed;
-  top: 24px;
+  top: 60px;
   right: 24px;
   z-index: 999;
   background: #111111;
@@ -613,7 +613,7 @@ ul, ol {
   padding: 12px 20px;
   font-family: var(--font-main);
   font-size: var(--text-base);
-  color: #f0f0f0;
+  color: #eeecea;
   opacity: 0;
   transition: opacity 150ms ease;
   pointer-events: none;
@@ -698,6 +698,19 @@ ul, ol {
   margin-bottom: 64px;
 }
 
+.about-section-label {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-label-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -713,8 +726,10 @@ ul, ol {
 }
 
 .about-competencies-label {
-  font-size: var(--text-base);
+  font-size: var(--text-label);
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   margin-bottom: 16px;
 }
 
@@ -725,12 +740,12 @@ ul, ol {
 }
 
 .tag {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-primary);
-  background: #1a1a1a;
+  background: #31312f;
   border: 1px solid #333333;
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 8px 18px;
   line-height: 1;
 }
 
@@ -754,8 +769,7 @@ ul, ol {
 
 .project-hero {
   padding: 40px 0 24px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 40px;
+  margin-bottom: 64px;
 }
 
 .project-title {
