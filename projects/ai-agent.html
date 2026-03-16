@@ -35,6 +35,22 @@
       left: 0;
       color: var(--text-muted);
     }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
+    }
   </style>
 </head>
 <body class="project-page">
@@ -104,17 +120,17 @@
         <div class="section-rule"></div>
       </div>
       <div class="project-section-content">
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">Claude Code</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">Vanilla JS</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">HTML</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">CSS</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">Git</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">GitHub</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">GitHub Pages</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">VS Code</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">Live Server</span>
-          <span style="padding:6px 14px;border:1px solid #3a3a3a;border-radius:100px;font-size:13px;color:var(--text-secondary);">Google Fonts</span>
+        <div class="tag-row">
+          <span class="tag">Claude Code</span>
+          <span class="tag">Vanilla JS</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">GitHub Pages</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Live Server</span>
+          <span class="tag">Google Fonts</span>
         </div>
         <img src="../assets/images/Boot%20Sequence.gif" alt="Boot Sequence" loop style="display:block;width:100%;border-radius:8px;margin-top:24px;">
         <img src="../assets/images/Claude%20code.gif" alt="Claude Code" loop style="display:block;width:100%;border-radius:8px;margin-top:16px;">

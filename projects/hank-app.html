@@ -12,6 +12,15 @@
   <link rel="stylesheet" href="../css/styles.css">
   <script src="../js/main.js" defer></script>
   <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
     /* Phone mockup */
     .phone-wrapper {
       display: flex;
@@ -94,11 +103,13 @@
     }
 
     .tag {
-      padding: 6px 14px;
-      border: 1px solid #3a3a3a;
-      border-radius: 100px;
-      font-size: 13px;
-      color: var(--text-secondary);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
     }
 
     /* Feature list */
@@ -186,6 +197,13 @@
 
   <div class="container">
 
+    <!-- Cover Image -->
+    <img
+      src="../assets/images/hank-banner.png"
+      alt="Hank - Home Buying Co-pilot"
+      class="project-cover"
+    >
+
     <!-- Hero -->
     <header class="project-hero">
       <h1 class="project-title">Hank - Home Buying Co-Pilot</h1>
@@ -210,7 +228,6 @@
       </div>
 
     </header>
-
 
     <!-- Overview -->
     <section class="project-section">

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="I Only Listen To Vinyl. A product case study by Sebastian Bosman.">
-  <title>I Only Listen To Vinyl  -  Sebastian Bosman</title>
+  <meta name="description" content="I Only Listen To Vinyl — a curated portal of vinyl-only DJ sets. Built by Sebastian Bosman.">
+  <title>I Only Listen To Vinyl · Sebastian Bosman</title>
   <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +21,47 @@
       margin-top: 16px;
     }
 
-    .overview-lead {
-      font-size: 18px;
-      color: #f0f0f0;
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 16px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
     }
 
     .project-screenshots {
@@ -39,13 +75,6 @@
       display: block;
       width: 100%;
       border-radius: 8px;
-    }
-
-    .project-gif {
-      display: block;
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 32px;
     }
   </style>
 </head>
@@ -63,16 +92,15 @@
     </div>
   </nav>
 
-
   <div class="container">
 
-    <!-- Project Hero -->
+    <!-- Hero -->
     <header class="project-hero">
       <h1 class="project-title">I Only Listen To Vinyl</h1>
 
       <div class="project-meta">
         <div class="project-meta-item">
-          <span class="project-meta-label">Company</span>
+          <span class="project-meta-label">Type</span>
           <span class="project-meta-value">Personal Project</span>
         </div>
         <div class="project-meta-item">
@@ -83,23 +111,114 @@
           <span class="project-meta-label">Platform</span>
           <span class="project-meta-value">Web App</span>
         </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Stack</span>
+          <span class="project-meta-value">React · Express.js</span>
+        </div>
       </div>
+
     </header>
 
 
     <!-- Overview -->
     <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
       <div class="project-section-content">
-        <p class="overview-lead">It's definitely ironic that I work in music tech and have recently felt the urge to experience human curation.</p>
-        <p>As a visual person, my favourite place to experience this is YouTube and taking it a step further, vinyl only DJ sets.</p>
-        <p>I started to notice others also appreciate human curation, so I built I Only Listen To Vinyl - a curated portal of vinyl only DJ sets.</p>
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;">
+          Built for people who are tired of algorithms deciding what they listen to. I Only Listen To Vinyl is a curated portal of vinyl-only DJ sets - underground genres, human selection, no recommendations. The app pairs a retro Technics 1200 turntable-inspired UI with YouTube-powered playback, giving the feeling of digging through a record crate on the web. Playlists are hand-curated by BRONSON.
+        </p>
+      </div>
+    </section>
 
-        <img
-          src="../assets/images/Untitled%20Design%20Custom%20Video.gif"
-          alt=""
-          class="project-gif"
-        >
 
+    <!-- Live App -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Live App</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <iframe
+          src="https://ionlylistentovinyl.com/"
+          title="I Only Listen To Vinyl"
+          loading="lazy"
+          allow="fullscreen"
+          style="width:100%;height:700px;border:1px solid #1e1e1e;border-radius:8px;display:block;"
+        ></iframe>
+      </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Features</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Vintage Technics 1200 turntable-inspired UI - tactile, not digital</li>
+          <li>YouTube-powered playlist player with authentic vinyl aesthetic</li>
+          <li>Six curated genre playlists: House, Techno, Disco, Dub Techno, Deep House &amp; Techno, Hardgroove</li>
+          <li>Draggable, resizable windows for player and info panels</li>
+          <li>Vinyl-inspired visual effects and UI elements throughout</li>
+          <li>Media controls styled after professional audio equipment</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Tooling -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Tooling</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="tag-row">
+          <span class="tag">React 18</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">Radix UI</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">YouTube Data API v3</span>
+          <span class="tag">TanStack Query</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Claude Code</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Process -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Process</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Noticed vinyl-only DJ sets on YouTube had a loyal following but no dedicated home</li>
+          <li>Designed around the physicality of vinyl - the UI should feel retro and tactile, not like a streaming app</li>
+          <li>Built the full stack app with Claude Code from spec to deployment</li>
+          <li>Deployed to Railway, embedded live into portfolio via iframe</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Reception -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Reception</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
         <div class="project-screenshots">
           <img src="../assets/images/Vibe%20Coding%20Comment%201.png" alt="" loading="lazy">
           <img src="../assets/images/Vibe%20Coding%20Comment%202.png" alt="" loading="lazy">
