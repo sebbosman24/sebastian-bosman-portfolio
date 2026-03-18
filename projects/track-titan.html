@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track Titan — Top-of-funnel growth lever for Track Titan, built by Sebastian Bosman.">
+  <title>Track Titan — Sim Racing Bootcamp · Sebastian Bosman</title>
+  <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    /* Phone mockup */
+    .phone-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0;
+    }
+
+    .phone-shell {
+      position: relative;
+      width: 418px;
+      background: #111;
+      border-radius: 54px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 1px #333,
+        0 0 0 3px #1a1a1a,
+        0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    /* Side buttons */
+    .phone-shell::before {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 120px;
+      width: 3px;
+      height: 36px;
+      background: #2a2a2a;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 52px 0 #2a2a2a, 0 96px 0 #2a2a2a;
+    }
+
+    .phone-shell::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 160px;
+      width: 3px;
+      height: 68px;
+      background: #2a2a2a;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 390px;
+      height: 844px;
+      border-radius: 42px;
+      overflow: clip;
+      background: #0a0a0a;
+    }
+
+    /* Dynamic island */
+    .phone-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 34px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .phone-screen iframe {
+      width: 390px;
+      height: 844px;
+      border: none;
+      border-radius: 42px;
+      display: block;
+    }
+
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Research agents grid */
+    .agent-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .agent-card {
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .agent-card summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background var(--transition);
+    }
+
+    .agent-card summary::-webkit-details-marker { display: none; }
+
+    .agent-card summary:hover {
+      background: #1a1a1a;
+    }
+
+    .agent-card[open] summary {
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .agent-summary-text {
+      flex: 1;
+    }
+
+    .agent-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .agent-title {
+      font-size: var(--text-body);
+      color: var(--text-primary);
+    }
+
+    .agent-chevron,
+    .iteration-chevron {
+      width: 22px;
+      height: 22px;
+      border: 1px solid #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-primary);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .agent-card summary:hover .agent-chevron,
+    .iteration-card summary:hover .iteration-chevron {
+      border-color: #888;
+    }
+
+    .agent-card[open] .agent-chevron,
+    .iteration-card[open] .iteration-chevron {
+      transform: rotate(180deg);
+    }
+
+    .agent-body {
+      padding: 14px 20px;
+    }
+
+    .agent-findings {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .agent-findings li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .agent-findings li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Iteration cards */
+    .iteration-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .iteration-card {
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .iteration-card summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background var(--transition);
+    }
+
+    .iteration-card summary::-webkit-details-marker { display: none; }
+
+    .iteration-card summary:hover {
+      background: #1a1a1a;
+    }
+
+    .iteration-card[open] summary {
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .iteration-summary-text {
+      flex: 1;
+    }
+
+    .iteration-version {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .iteration-title {
+      font-size: var(--text-body);
+      color: var(--text-primary);
+    }
+
+    .iteration-body {
+      padding: 14px 20px;
+    }
+
+    .iteration-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid #333;
+      padding-bottom: 2px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .open-link:hover {
+      color: var(--text-primary);
+      border-color: #666;
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html?view=portfolio" class="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="../index.html?view=portfolio#projects">Projects</a>
+        <a href="../index.html?view=portfolio#work">Work</a>
+        <a href="../index.html?view=portfolio#contact" id="nav-contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="project-hero">
+      <h1 class="project-title">Track Titan — Growth Funnel</h1>
+
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Growth Concept</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2026</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Platform</span>
+          <span class="project-meta-value">Web App / PWA</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Stack</span>
+          <span class="project-meta-value">Next.js · Claude AI</span>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- Overview -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;">
+          F1's global fanbase has grown 63% since 2018 — from 490M to 827M fans — driven by a younger, Drive to Survive cohort with deep emotional investment in the sport and no pathway into sim racing. Track Titan is a telemetry coaching platform built for active sim racers. This project explores the gap between those two audiences: a top-of-funnel growth lever designed to convert F1 fans into Track Titan users, before they've ever touched a wheel.
+        </p>
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-top:16px;">
+          Sim Racing Bootcamp is a 7-question identity quiz that delivers a personalised Driver DNA archetype — powered by Claude AI — and hands the user to Track Titan with confidence and momentum. Stateless, sub-10-second, designed for paid ad traffic. The product isn't an onboarding tool. It's a growth lever.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>How It Works</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>User lands from a paid ad targeting F1 fans socials</li>
+          <li>Takes a 7-question identity quiz — feels like an F1 personality test, not a form. All identity-based, zero transactional questions</li>
+          <li>F1 start lights animation plays while Claude Haiku generates their profile — API latency turned into a branded, recognisable moment F1 fans immediately understand</li>
+          <li>Driver DNA reveal: a named archetype, 4 single-word trait tiles with icons, a personalised tagline, and a Track Titan hook — all generated from 7 quiz signals</li>
+          <li>Your Rookie Season — four conceptual steps into sim racing, step one personalised with their chosen circuit</li>
+          <li>Track Titan CTA with a personalised hook connecting their DNA directly to telemetry coaching</li>
+          <li>One-tap share to X or Reddit — the archetype name drives organic loops back into the funnel</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Live App -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Live App</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="phone-wrapper">
+          <div class="phone-shell">
+            <div class="phone-screen">
+              <div class="phone-island"></div>
+              <iframe
+                src="https://sim-racing-bootcamp-production.up.railway.app/"
+                title="Track Titan — Sim Racing Bootcamp"
+                loading="lazy"
+                allow="fullscreen"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Process -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Process</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Ran five parallel AI research agents before writing a single line of code — each tasked with a specific domain: audience growth, conversion barriers, competitor onboarding, Track Titan positioning, and viral mechanics</li>
+          <li>Used research findings to write a detailed product spec (CLAUDE.md) covering audience, quiz structure, AI prompt architecture, design system, and growth strategy</li>
+          <li>Used Claude Code to build screen by screen — quiz flow, AI generation pipeline, results layout, share card, and OG image generation</li>
+          <li>Iterated through three distinct versions, each driven by a strategic insight rather than a visual preference</li>
+          <li>Deployed to Railway via nixpacks — fully stateless, no database, zero infrastructure overhead</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Research -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Research</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-bottom:24px;">
+          Before a single line of code was written, five AI research agents were spawned in parallel to validate the opportunity and define the product approach. Every major product decision traces directly back to a research finding.
+        </p>
+        <div class="agent-grid">
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 1</div>
+                <div class="agent-title">F1 Growth Trajectory</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>F1 fanbase grew from 490M to 827M between 2018 and 2024 (+63%)</li>
+                <li>Fastest-growing demographic: 16–35 year olds, with significant female audience growth</li>
+                <li>Drive to Survive created identity-driven fans who follow the drama, the drivers, the circuits — and increasingly want to participate, not just watch</li>
+                <li>iRacing hit 300,000 simultaneous active accounts in January 2025 — real latent demand</li>
+                <li>No product exists to convert F1 fan interest into a first sim racing session</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 2</div>
+                <div class="agent-title">F1 Fan to Sim Racing Funnel</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>The five-layer bridging problem: hardware paralysis, game selection confusion, technique gaps, and sim ecosystem illiteracy — no single product guides fans through any of it</li>
+                <li>Most YouTube content covers hardware and game selection but skips driving technique entirely</li>
+                <li>The emotional hook is identity, not instruction — fans want to feel like drivers, not students</li>
+                <li>"Budget" and "platform" decisions create friction too early; identity questions build engagement</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 3</div>
+                <div class="agent-title">Sim Racing Onboarding Landscape</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>iRacing: functional for informed users, actively hostile to cold-start newcomers</li>
+                <li>ACC: setup options appear immediately with zero guidance for beginners</li>
+                <li>Gran Turismo 7 is best-in-class for onboarding but its physics don't transfer to simulation</li>
+                <li>No YouTube channel has produced a sequenced, progressive beginner series — content is episodic, not designed for learning</li>
+                <li>The gap: no product bridges F1 fan → sim racing competence with a structured, personalised, interactive flow</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 4</div>
+                <div class="agent-title">Track Titan Positioning</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>Track Titan is a telemetry coaching platform — primarily serving active sim racers who want to improve</li>
+                <li>No pre-acquisition funnel exists; Track Titan has no content or product targeting the "I want to start sim racing" phase</li>
+                <li>The product-market fit gap: Track Titan speaks to existing sim racers, not the F1 fan who hasn't yet made the leap</li>
+                <li>An identity-affirming onboarding funnel could drive significant top-of-funnel volume with no infrastructure overhead</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 5</div>
+                <div class="agent-title">Product Validation &amp; Virality Mechanics</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>Personality-based results that feel "uncannily accurate" drive social sharing — the identity label is the product</li>
+                <li>F1 fans respond strongly to personality framing tied to real drivers: Verstappen as aggressive risk-taker, Alonso as tactical mastermind</li>
+                <li>Shareable cards with a named archetype create the viral loop: "I'm The Monaco Specialist — what are you?"</li>
+                <li>The quiz must feel like an F1 personality test, not a shopping decision tree</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Product Strategy -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Product Strategy</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Quiz redesigned around identity — not hardware or budget. Research showed transactional questions create friction for cold paid-ad audiences. Every question asks who you are, not what you'll buy</li>
+          <li>Driver DNA archetype became the core of the product. Identity-affirming results are the single biggest driver of sharing behaviour — everything else frames and amplifies this moment</li>
+          <li>Hardware recommendations removed entirely. Presenting a £299 wheel recommendation to someone who just clicked a Facebook ad is premature. That conversation belongs inside Track Titan</li>
+          <li>4-week curriculum replaced with four conceptual Rookie Season steps — concepts, not a schedule. Time-based commitments create pressure for someone who hasn't yet committed to the sport</li>
+          <li>Share card made a centrepiece. The archetype name is what gets screenshotted: "I'm The Apex Hunter — what are you?"</li>
+          <li>Circuit selection question included specifically to personalise step one of the Rookie Season — "Learn your favourite track: Silverstone" — an immediate, specific moment of recognition</li>
+          <li>CTA rewritten to connect Driver DNA to Track Titan's telemetry value, not hardware readiness: "Your Driver DNA is just the start. Track Titan's telemetry will show you exactly how your natural style plays out on circuit"</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Iteration -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Iteration</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="iteration-grid">
+
+          <details class="iteration-card">
+            <summary>
+              <div class="iteration-summary-text">
+                <div class="iteration-version">Version 1</div>
+                <div class="iteration-title">Sim Racing Onboarding Tool</div>
+              </div>
+              <span class="iteration-chevron">▾</span>
+            </summary>
+            <div class="iteration-body">
+              <p class="iteration-desc">Original framing: a structured onboarding flow for new sim racers. Featured hardware recommendations (wheel, pedals, 3-month upgrade path), game recommendations, and a 4-week curriculum with 12 specific session descriptions. Aimed at someone who had already decided to start. Problem: that audience is tiny.</p>
+            </div>
+          </details>
+
+          <details class="iteration-card">
+            <summary>
+              <div class="iteration-summary-text">
+                <div class="iteration-version">Version 2</div>
+                <div class="iteration-title">Growth Funnel Reframe</div>
+              </div>
+              <span class="iteration-chevron">▾</span>
+            </summary>
+            <div class="iteration-body">
+              <p class="iteration-desc">Reframed as a paid ad funnel targeting F1 fans — people much earlier in their intent journey. Quiz pivoted from transactional (budget, platform, weekly hours) to identity (what draws you to F1, which driver speaks to you, which circuit). Hardware and curriculum removed. Share card brought forward as a primary feature. CTA rewritten from hardware-readiness to DNA-to-telemetry.</p>
+            </div>
+          </details>
+
+          <details class="iteration-card">
+            <summary>
+              <div class="iteration-summary-text">
+                <div class="iteration-version">Version 3</div>
+                <div class="iteration-title">Visual Simplification</div>
+              </div>
+              <span class="iteration-chevron">▾</span>
+            </summary>
+            <div class="iteration-body">
+              <p class="iteration-desc">Multiple rounds of reduction based on the principle that overwhelm kills conversion. Trait pills replaced with icon + single-word tiles. Race prediction removed — archetype name alone carries the moment. Section headings stripped. "Your Journey" became "Your Rookie Season" — F1-coded, positions the user as a driver not a fan. Share card redesigned and integrated directly into the DNA card.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Tooling -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Tooling</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="tag-row">
+          <span class="tag">Next.js 16</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">Claude Haiku</span>
+          <span class="tag">Anthropic SDK</span>
+          <span class="tag">next/og</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">Sebastian Bosman</span>
+      <span class="footer-text">Built with Claude Code + GitHub</span>
+    </div>
+  </footer>
+
+</body>
+</html>
