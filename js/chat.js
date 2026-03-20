@@ -101,12 +101,12 @@ function injectStyles() {
       z-index: 9998;
       width: 360px;
       max-height: 520px;
-      background: var(--surface, #111111);
-      border: 1px solid var(--border, #2a2a2a);
+      background: #1c1c1c;
+      border: 1px solid #3a3a3a;
       border-radius: 12px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 16px 64px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.04);
       overflow: hidden;
       /* hidden by default */
       opacity: 0;
@@ -123,7 +123,7 @@ function injectStyles() {
     /* ── Header ── */
     #chat-header {
       padding: 14px 16px;
-      border-bottom: 1px solid var(--border, #2a2a2a);
+      border-bottom: 1px solid #3a3a3a;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -182,9 +182,9 @@ function injectStyles() {
     }
     .chat-msg.assistant {
       align-self: flex-start;
-      background: #1e1e1e;
+      background: #272727;
       color: var(--text-primary, #f0f0f0);
-      border: 1px solid var(--border, #2a2a2a);
+      border: 1px solid #3a3a3a;
       border-bottom-left-radius: 3px;
     }
     .chat-msg.error {
@@ -231,13 +231,13 @@ function injectStyles() {
       align-items: center;
       gap: 8px;
       padding: 12px 16px;
-      border-top: 1px solid var(--border, #2a2a2a);
+      border-top: 1px solid #3a3a3a;
       flex-shrink: 0;
     }
     #chat-input {
       flex: 1;
-      background: transparent;
-      border: 1px solid var(--border, #2a2a2a);
+      background: #242424;
+      border: 1px solid #3a3a3a;
       border-radius: 6px;
       padding: 8px 12px;
       font-size: 13px;
@@ -399,7 +399,7 @@ async function sendMessage(text) {
           if (parsed.error) throw new Error(parsed.error);
           if (parsed.token) {
             fullText += parsed.token;
-            assistantEl.textContent = fullText;
+            assistantEl.innerHTML = renderMarkdown(fullText);
             assistantEl.classList.add('chat-cursor');
             scrollToBottom();
           }
@@ -427,10 +427,20 @@ async function sendMessage(text) {
 }
 
 // ─── DOM helpers ─────────────────────────────────────────────
+function renderMarkdown(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
 function appendMessage(type, text) {
   const el = document.createElement('div');
   el.className = `chat-msg ${type}`;
-  el.textContent = text;
+  if (type === 'assistant') {
+    el.innerHTML = renderMarkdown(text);
+  } else {
+    el.textContent = text;
+  }
   document.getElementById('chat-messages').appendChild(el);
   scrollToBottom();
   return el;
