@@ -39,8 +39,7 @@ function buildWidget() {
     <div id="chat-header">
       <div id="chat-header-info">
         <div>
-          <div id="chat-name">Chat with Seb 👋</div>
-          <div id="chat-status"></div>
+          <div id="chat-name">Hey there, let's chat 👋</div>
         </div>
       </div>
     </div>
@@ -156,14 +155,6 @@ function injectStyles() {
       display: block;
     }
     #chat-name { font-size: 15px; font-weight: 400; color: var(--text-primary, #f0f0f0); text-align: left; }
-    #chat-status { font-size: 11px; color: var(--text-secondary, #888); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
-    #chat-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      display: inline-block;
-    }
-    #chat-dot.thinking { background: #facc15; animation: pulse 1s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     /* ── Messages ── */
@@ -211,6 +202,14 @@ function injectStyles() {
     }
 
     /* streaming cursor */
+    .chat-cursor:empty::before {
+      content: 'Thinking…';
+      animation: pulse 1s infinite;
+      opacity: 0.6;
+      color: var(--text-secondary, #888);
+      font-style: italic;
+      margin-right: 2px;
+    }
     .chat-cursor::after {
       content: '▋';
       animation: blink 0.7s step-end infinite;
@@ -368,7 +367,7 @@ async function sendMessage(text) {
   if (isStreaming) return;
   isStreaming = true;
 
-  setStatusThinking(true);
+
   setSendDisabled(true);
 
   appendMessage('user', text);
@@ -437,7 +436,7 @@ async function sendMessage(text) {
     chatHistory.pop();
   } finally {
     isStreaming = false;
-    setStatusThinking(false);
+
     setSendDisabled(false);
   }
 }
@@ -467,17 +466,6 @@ function scrollToBottom() {
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-function setStatusThinking(thinking) {
-  const dot    = document.getElementById('chat-dot');
-  const status = document.getElementById('chat-status');
-  dot.className = thinking ? 'thinking' : '';
-  const textNode = status.lastChild;
-  if (textNode && textNode.nodeType === Node.TEXT_NODE) {
-    textNode.textContent = thinking ? 'Thinking…' : '';
-  } else {
-    status.appendChild(document.createTextNode(thinking ? 'Thinking…' : ''));
-  }
-}
 
 function setSendDisabled(disabled) {
   document.getElementById('chat-send').disabled = disabled;
