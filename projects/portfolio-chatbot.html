@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Chatbot — Claude-powered AI assistant embedded on sebastianbosman.com. Built by Sebastian Bosman.">
+  <title>Portfolio Chatbot · Sebastian Bosman</title>
+  <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+  <script src="../js/chat.js" defer></script>
+  <style>
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Architecture diagram */
+    .arch-block {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .arch-block .arch-label {
+      color: var(--text-primary);
+    }
+
+    .arch-block .arch-comment {
+      color: var(--text-muted);
+    }
+
+    /* Live badge */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border: 1px solid #4ade8044;
+      border-radius: 100px;
+      font-size: 12px;
+      color: #4ade80;
+      margin-top: 12px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Demo CTA */
+    .demo-cta {
+      background: #1a1a1a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .demo-cta p {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .demo-arrow {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html?view=portfolio" class="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="../index.html?view=portfolio#projects">Projects</a>
+        <a href="../index.html?view=portfolio#work">Work</a>
+        <a href="../index.html?view=portfolio#contact" id="nav-contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="project-hero" style="padding-top: 48px;">
+      <h1 class="project-title">Portfolio Chatbot</h1>
+
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Personal Project</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2026</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Platform</span>
+          <span class="project-meta-value">Web (Embedded Widget)</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Stack</span>
+          <span class="project-meta-value">Node.js · Claude API · Railway</span>
+        </div>
+      </div>
+
+    </header>
+
+
+    <!-- Overview -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;">
+          A Claude-powered AI assistant embedded across this portfolio. Visitors can ask it questions about my background, projects, skills, and how to get in touch - and receive streamed, real-time responses. The chatbot is the widget in the bottom-right corner of every page.
+        </p>
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-top:12px;">
+          The goal was to build this as a production-grade feature - not a toy. The backend is a standalone API service with rate limiting, CORS, and streaming. The API key never touches the browser. The architecture mirrors how you'd ship an AI feature in a real product team.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Live Demo -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Live Demo</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="demo-cta">
+          <p>The chatbot is live on this page right now. Hit the button in the bottom-right corner and ask it anything about me.</p>
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            Widget active on this page
+          </div>
+          <div class="demo-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Look bottom-right
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Architecture -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Architecture</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">
+          The system is split into two separate repos: a static frontend (GitHub Pages) and a dedicated API service (Railway). This separation means the Anthropic API key is never shipped to the browser, CORS is locked to the portfolio domain, and the backend can be scaled or swapped independently.
+        </p>
+        <div class="arch-block">
+<span class="arch-label">Browser</span> (sebastianbosman.com — GitHub Pages)
+  <span class="arch-comment">├─ js/chat.js          vanilla JS widget, no dependencies</span>
+  <span class="arch-comment">└─ POST /chat ──────────────────────────────────────────────┐</span>
+                                                            <span class="arch-comment">│</span>
+<span class="arch-label">portfolio-chat-api</span> (Railway)                               <span class="arch-comment">│</span>
+  <span class="arch-comment">├─ CORS  ──── locked to sebastianbosman.com             ◄──┘</span>
+  <span class="arch-comment">├─ Rate limit ─ 20 requests / 15 min / IP</span>
+  <span class="arch-comment">├─ Input validation ─ 500 char max, array bounds check</span>
+  <span class="arch-comment">├─ System prompt ─ Sebastian's full profile (hardcoded)</span>
+  <span class="arch-comment">└─ SSE stream ──────────────────────────────────────────────┐</span>
+                                                            <span class="arch-comment">│</span>
+<span class="arch-label">Anthropic API</span> (Claude Haiku)                              <span class="arch-comment">◄──┘</span>
+  <span class="arch-comment">└─ API key: Railway env var — never in browser source</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Features</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Streaming responses via Server-Sent Events (SSE) - tokens render as they arrive</li>
+          <li>Conversation history passed on each request - the bot remembers context within a session</li>
+          <li>Rate limited to 20 requests per 15 minutes per IP - protects against abuse and API cost spikes</li>
+          <li>CORS locked to sebastianbosman.com - the endpoint can't be called from other origins</li>
+          <li>Input capped at 500 characters and validated server-side</li>
+          <li>Suggested questions on first open - reduces friction for new visitors</li>
+          <li>Animated thinking state, streaming cursor, and error handling with recovery</li>
+          <li>Fully responsive - works on mobile, adapts panel width to screen size</li>
+          <li>Zero frontend dependencies - pure vanilla JS, no framework or bundler</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Design decisions -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Key Decisions</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li><strong style="color:var(--text-primary);">Haiku over Sonnet</strong> - Response speed matters more than depth for a portfolio chat widget. Haiku is faster and cheaper, which is the right trade-off at this scale.</li>
+          <li><strong style="color:var(--text-primary);">SSE over WebSockets</strong> - SSE is simpler, HTTP-native, and sufficient for one-way streaming. WebSockets add connection overhead with no benefit here.</li>
+          <li><strong style="color:var(--text-primary);">Hardcoded system prompt over RAG</strong> - My profile fits in a single prompt. RAG adds infra complexity (vector DB, embeddings pipeline) that isn't justified at this scope - but the architecture could support it.</li>
+          <li><strong style="color:var(--text-primary);">Separate backend repo</strong> - Keeps secrets out of the frontend repo, enables independent deployment and scaling, and reflects how production teams actually ship this kind of feature.</li>
+          <li><strong style="color:var(--text-primary);">No auth</strong> - Rate limiting per IP is sufficient for a public portfolio. Adding auth (e.g. JWT) would be the next step if this were a multi-tenant product.</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Tooling -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Tooling</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="tag-row">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">Claude API (Haiku)</span>
+          <span class="tag">SSE Streaming</span>
+          <span class="tag">express-rate-limit</span>
+          <span class="tag">CORS</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Vanilla JS</span>
+          <span class="tag">GitHub Pages</span>
+          <span class="tag">Claude Code</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Process -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Process</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Spec'd the architecture before writing code: separate API service, SSE streaming, no frontend dependencies</li>
+          <li>Built the Express backend with rate limiting and CORS first - got the security layer right before the AI layer</li>
+          <li>Designed the system prompt to be concise but complete - covering work history, skills, projects, tone, and what to do when the bot doesn't know something</li>
+          <li>Built the frontend widget in vanilla JS to match the existing portfolio design system - CSS variables, Inter font, dark theme tokens</li>
+          <li>Deployed backend to Railway with the API key as an environment variable - never committed to source</li>
+          <li>Wired the widget into all 16 portfolio pages via a single script tag</li>
+        </ul>
+      </div>
+    </section>
+
+  </div><!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">Sebastian Bosman</span>
+      <span class="footer-text">Built with Claude Code + GitHub</span>
+    </div>
+  </footer>
+
+</body>
+</html>
