@@ -58,24 +58,24 @@
 
     /* Architecture diagram */
     .arch-block {
-      background: #111;
-      border: 1px solid var(--border);
+      background: #f0f0f0;
+      border: 1px solid #ddd;
       border-radius: 8px;
       padding: 24px;
       font-family: 'Courier New', monospace;
       font-size: 12px;
-      color: var(--text-secondary);
+      color: #555;
       line-height: 1.8;
       overflow-x: auto;
       margin-top: 8px;
     }
 
     .arch-block .arch-label {
-      color: var(--text-primary);
+      color: #111;
     }
 
     .arch-block .arch-comment {
-      color: var(--text-muted);
+      color: #888;
     }
 
     /* Live badge */
@@ -185,7 +185,7 @@
           A Claude-powered AI assistant embedded across this portfolio. Visitors can ask it questions about my background, projects, skills, and how to get in touch - and receive streamed, real-time responses. The chatbot is the widget in the bottom-right corner of every page.
         </p>
         <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-top:12px;">
-          The goal was to build this as a production-grade feature - not a toy. The backend is a standalone API service with rate limiting, CORS, and streaming. The API key never touches the browser. The architecture mirrors how you'd ship an AI feature in a real product team.
+          The goal was to build this as a production-grade feature. The backend is a standalone API service with rate limiting, CORS, and streaming. The API key never touches the browser. The architecture mirrors how you'd ship an AI feature in a real product team.
         </p>
       </div>
     </section>

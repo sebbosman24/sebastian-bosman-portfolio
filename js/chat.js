@@ -5,9 +5,11 @@
 const CHAT_API_URL = 'https://portfolio-chat-api-production.up.railway.app/chat';
 
 const SUGGESTED_QUESTIONS = [
-  'What has Sebastian worked on?',
-  'What are his skills?',
-  'How can I contact him?',
+  'What does his 0-to-1 process look like?',
+  'What\'s the most complex problem he\'s shipped a solution to?',
+  'What makes him different from other PMs?',
+  'What\'s his experience with growth and metrics?',
+  'How does he balance user needs with business goals?',
 ];
 
 // ─── State ────────────────────────────────────────────────────
@@ -19,7 +21,7 @@ function buildWidget() {
   // FAB trigger button
   const fab = document.createElement('button');
   fab.id = 'chat-fab';
-  fab.setAttribute('aria-label', 'Chat with Sebastian\'s AI');
+  fab.setAttribute('aria-label', 'Chat with Seb');
   fab.innerHTML = `
     <svg id="chat-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -36,17 +38,16 @@ function buildWidget() {
   panel.innerHTML = `
     <div id="chat-header">
       <div id="chat-header-info">
-        <div id="chat-avatar">SB</div>
         <div>
-          <div id="chat-name">Sebastian's AI</div>
-          <div id="chat-status"><span id="chat-dot"></span>Ask me anything</div>
+          <div id="chat-name">Chat with Seb 👋</div>
+          <div id="chat-status"></div>
         </div>
       </div>
     </div>
     <div id="chat-messages" role="log" aria-live="polite"></div>
     <div id="chat-suggestions"></div>
     <div id="chat-input-row">
-      <input id="chat-input" type="text" placeholder="Ask about Sebastian…" maxlength="500" autocomplete="off"/>
+      <input id="chat-input" type="text" placeholder="Don't be shy…" maxlength="500" autocomplete="off"/>
       <button id="chat-send" aria-label="Send message">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -85,7 +86,19 @@ function injectStyles() {
       justify-content: center;
       box-shadow: 0 4px 24px rgba(0,0,0,0.5);
       transition: transform 150ms ease, background 150ms ease;
+      isolation: isolate;
     }
+    #chat-fab::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 999px;
+      background: conic-gradient(from 0deg, transparent 55%, rgba(240,240,240,0.9) 75%, transparent 100%);
+      animation: fab-spin 2s linear infinite;
+      z-index: -1;
+    }
+    #chat-fab.open::before { animation: none; opacity: 0; }
+    @keyframes fab-spin { to { transform: rotate(360deg); } }
     #chat-fab:hover { transform: scale(1.08); }
     #chat-fab:active { transform: scale(0.96); }
     #chat-icon-close { display: none; }
@@ -99,7 +112,7 @@ function injectStyles() {
       bottom: 92px;
       right: 28px;
       z-index: 9998;
-      width: 360px;
+      width: 400px;
       max-height: 520px;
       background: #1c1c1c;
       border: 1px solid #3a3a3a;
@@ -123,6 +136,7 @@ function injectStyles() {
     /* ── Header ── */
     #chat-header {
       padding: 14px 16px;
+      background: #272727;
       border-bottom: 1px solid #3a3a3a;
       display: flex;
       align-items: center;
@@ -133,15 +147,15 @@ function injectStyles() {
     #chat-avatar {
       width: 34px; height: 34px;
       border-radius: 999px;
-      background: var(--text-primary, #f0f0f0);
-      color: var(--bg, #181818);
-      font-size: 11px;
-      font-weight: 400;
-      display: flex; align-items: center; justify-content: center;
-      font-family: inherit;
-      letter-spacing: 0.04em;
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    #chat-name { font-size: 13px; font-weight: 400; color: var(--text-primary, #f0f0f0); }
+    #chat-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #chat-name { font-size: 15px; font-weight: 400; color: var(--text-primary, #f0f0f0); text-align: left; }
     #chat-status { font-size: 11px; color: var(--text-secondary, #888); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
     #chat-dot {
       width: 6px; height: 6px;
@@ -162,6 +176,7 @@ function injectStyles() {
       gap: 10px;
       scroll-behavior: smooth;
     }
+    #chat-messages:empty { padding: 0; flex: 0; }
     #chat-messages::-webkit-scrollbar { width: 4px; }
     #chat-messages::-webkit-scrollbar-track { background: transparent; }
     #chat-messages::-webkit-scrollbar-thumb { background: var(--border, #2a2a2a); border-radius: 2px; }
@@ -209,13 +224,13 @@ function injectStyles() {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      padding: 0 16px 12px;
+      padding: 36px 16px;
     }
     .chat-suggestion {
       font-size: 11px;
       padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid var(--border, #2a2a2a);
+      border: 1px solid #555;
       background: transparent;
       color: var(--text-secondary, #888);
       cursor: pointer;
@@ -231,6 +246,7 @@ function injectStyles() {
       align-items: center;
       gap: 8px;
       padding: 12px 16px;
+      background: #272727;
       border-top: 1px solid #3a3a3a;
       flex-shrink: 0;
     }
@@ -457,9 +473,9 @@ function setStatusThinking(thinking) {
   dot.className = thinking ? 'thinking' : '';
   const textNode = status.lastChild;
   if (textNode && textNode.nodeType === Node.TEXT_NODE) {
-    textNode.textContent = thinking ? 'Thinking…' : 'Ask me anything';
+    textNode.textContent = thinking ? 'Thinking…' : '';
   } else {
-    status.appendChild(document.createTextNode(thinking ? 'Thinking…' : 'Ask me anything'));
+    status.appendChild(document.createTextNode(thinking ? 'Thinking…' : ''));
   }
 }
 
