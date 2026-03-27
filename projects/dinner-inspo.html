@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dinner Inspo - AI-powered recipe discovery PWA built by Sebastian Bosman.">
+  <title>Dinner Inspo · Sebastian Bosman</title>
+  <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+  <script src="../js/chat.js" defer></script>
+  <style>
+    .project-cover {
+      display: block;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: var(--text-primary);
+      background: #31312f;
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 8px 18px;
+      line-height: 1;
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Collapsible cards (shared) */
+    .agent-grid,
+    .iteration-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .agent-card,
+    .iteration-card {
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .agent-card summary,
+    .iteration-card summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background var(--transition);
+    }
+
+    .agent-card summary::-webkit-details-marker,
+    .iteration-card summary::-webkit-details-marker { display: none; }
+
+    .agent-card summary:hover,
+    .iteration-card summary:hover {
+      background: #1a1a1a;
+    }
+
+    .agent-card[open] summary,
+    .iteration-card[open] summary {
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .agent-summary-text,
+    .iteration-summary-text {
+      flex: 1;
+    }
+
+    .agent-label,
+    .iteration-version {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .agent-title,
+    .iteration-title {
+      font-size: var(--text-body);
+      color: var(--text-primary);
+    }
+
+    .agent-chevron,
+    .iteration-chevron {
+      width: 22px;
+      height: 22px;
+      border: 1px solid #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-primary);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .agent-card summary:hover .agent-chevron,
+    .iteration-card summary:hover .iteration-chevron {
+      border-color: #888;
+    }
+
+    .agent-card[open] .agent-chevron,
+    .iteration-card[open] .iteration-chevron {
+      transform: rotate(180deg);
+    }
+
+    .agent-body,
+    .iteration-body {
+      padding: 14px 20px;
+    }
+
+    .agent-findings {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .agent-findings li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .agent-findings li::before {
+      content: ' - ';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    .iteration-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Phone mockup */
+    .phone-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0;
+    }
+
+    .phone-shell {
+      position: relative;
+      width: 430px;
+      background: #111;
+      border-radius: 54px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 1px #333,
+        0 0 0 3px #1a1a1a,
+        0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    .phone-shell::before {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 120px;
+      width: 3px;
+      height: 36px;
+      background: #2a2a2a;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 52px 0 #2a2a2a, 0 96px 0 #2a2a2a;
+    }
+
+    .phone-shell::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 160px;
+      width: 3px;
+      height: 68px;
+      background: #2a2a2a;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 402px;
+      height: 870px;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #FFF8F0;
+    }
+
+    .phone-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 34px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .phone-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 42px;
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html?view=portfolio" class="nav-brand">Sebastian Bosman</a>
+      <div class="nav-links">
+        <a href="../index.html?view=portfolio#projects">Projects</a>
+        <a href="../index.html?view=portfolio#work">Work</a>
+        <a href="../index.html?view=portfolio#contact" id="nav-contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="project-hero">
+      <h1 class="project-title">Dinner Inspo</h1>
+
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <span class="project-meta-label">Type</span>
+          <span class="project-meta-value">Personal Project</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Year</span>
+          <span class="project-meta-value">2026</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Platform</span>
+          <span class="project-meta-value">Web App / PWA</span>
+        </div>
+        <div class="project-meta-item">
+          <span class="project-meta-label">Stack</span>
+          <span class="project-meta-value">Next.js · Claude Haiku</span>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- Overview -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Overview</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;">
+          Deciding what to cook for dinner is a daily exercise in decision fatigue. Most people open the fridge, stare at its contents, and end up ordering takeaway. Existing meal planning apps don't help - they're either too rigid (weekly meal plans you'll never follow), too generic (no awareness of what you actually have at home), or too complex for casual home cooks who just want something good tonight. There's a specific, solvable friction at the centre of it: you have food, but no idea what to make with it.
+        </p>
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-top:16px;">
+          Dinner Inspo is a bold, opinionated PWA that solves the dinner decision loop. It learns your tastes through a short onboarding, tracks what you always have in your pantry, and uses AI to generate personalised recipe ideas based on what's actually in your fridge right now. No recipe database. No login. No generic suggestions. Every recipe is generated fresh by Claude Haiku, personalised to the user's diet, skill level, cuisine preferences, and what they have at home.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Live App -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Live App</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="phone-wrapper">
+          <div class="phone-shell">
+            <div class="phone-screen">
+              <div class="phone-island"></div>
+              <iframe
+                src="https://dinner-inspo-production.up.railway.app/"
+                title="Dinner Inspo"
+                loading="lazy"
+                allow="fullscreen"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>How It Works</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Onboarding: 7 questions set diet, cuisine tastes, cooking confidence, and household size - stored in localStorage and injected into every AI call as permanent context</li>
+          <li>Pantry: users toggle staple items they always keep stocked. A Pantry Score (0 - 10) reflects versatility, with AI suggestions on what to add next and what it unlocks</li>
+          <li>Tonight: a fridge grid pre-populates with pantry staples - deselect what you don't have today, hit "Find recipes", and Claude returns 5 - 8 illustrated recipe cards</li>
+          <li>Recipe cards: anime-style illustration, name, cook time, difficulty, and a one-line pitch. Yes saves and opens the full recipe. No skips to the next</li>
+          <li>Your Recipes: every "Yes" stored permanently, browsable by cuisine, recency, or cook count. Made recipes separated from "Saved for later"</li>
+          <li>Big Shop: select how many meals to plan, get AI suggestions weighted to what you already have, then a consolidated shopping list grouped by supermarket section</li>
+          <li>Inspire: ignores cuisine preferences and surfaces recipes needing only 2 - 4 ingredients beyond your current pantry</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Research -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Research</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <p style="font-size:var(--text-body);color:var(--text-secondary);line-height:1.7;margin-bottom:24px;">
+          Before a line of code was written, five parallel research agents validated the product approach across distinct domains. Every major architectural and UX decision traces to a finding in one of these documents.
+        </p>
+        <div class="agent-grid">
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 1</div>
+                <div class="agent-title">Pantry Science - What Makes a Versatile Kitchen</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>18 synergy clusters map ingredient combinations to cuisines - holding ≥70% of a cluster's items "unlocks" that cuisine. The pantry score measures real versatility against this framework</li>
+                <li>Pantry score must calculate client-side from a scoring matrix, not via an AI call - the delight of the score ticking up when you toggle fish sauce must happen instantly, not after a 2 - 3 second API wait</li>
+                <li>Fish sauce, miso paste, tahini, and harissa/gochujang are the four "depth unlock" items with the highest recipe-unlocking power per dollar - the primary AI suggestion targets for users scoring 5 - 7</li>
+                <li>Production-ready unlock copy pattern: "Add fish sauce → unlocks Thai, Vietnamese, and SE Asian cooking - you could make pad Thai, larb, and nuoc cham"</li>
+                <li>Calibration point: a typical well-stocked kitchen scores ~5.75, confirming the scoring framework rewards genuine breadth without penalising a normal pantry</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 2</div>
+                <div class="agent-title">Card UX &amp; Gamification - Making Dinner Decisions Fun</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>Yes/No buttons win over swipe: better discoverability, safer PWA implementation (horizontal swipe is non-trivial to distinguish from scroll), and equal emotional satisfaction delivered through animation</li>
+                <li>5 - 8 cards per batch is the right range - matches decision fatigue research (Baumeister & Tierney); beyond 8 decisions, satisfaction with the chosen outcome drops</li>
+                <li>Pantry Score is "competence gamification" - measures genuine capability users build over time. Far more durable than arbitrary points or streak mechanics</li>
+                <li>No streak mechanics - wrong cadence for a 3 - 4 meals/week use case. Duolingo's own research showed high streak anxiety; streaks create pressure in the wrong place</li>
+                <li>Emoji for ingredient grid: icon recognition at ~150ms vs text reading at ~300ms. Zero asset cost, fully consistent, and actually faster to scan than small illustrations</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 3</div>
+                <div class="agent-title">AI Recipe Generation - Prompting for Dinner</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>Role + persona framing outperforms bare instruction: "You are an enthusiastic home cook who has been cooking for 15 years" produces more consistent tone and better editorial judgment than a neutral system prompt</li>
+                <li>One-shot examples reduce schema deviation by ~60 - 80% vs schema-only instructions - a single complete example recipe in the prompt is the single highest-ROI prompt improvement</li>
+                <li>Ingredient lists must be hard constraints, not soft suggestions - the prompt must explicitly state that every ingredient in the recipe must appear in the fridge list, pantry list, or a separate extrasNeeded array</li>
+                <li>visualCategory taxonomy expanded from 18 to 20 categories - add seafood and dumplings - covering ~92% of home meals vs ~87% with 18</li>
+                <li>Claude Haiku confirmed: 2 - 4s TTFB, under $0.01/request at typical usage, structured JSON reliability ~97% with schema + one-shot example</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 4</div>
+                <div class="agent-title">Competitor Landscape - The Gap in the Market</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>No existing app combines (a) ingredient-based recipe matching, (b) AI-generated personalised suggestions, and (c) a game-like discovery UX - the combination is genuinely differentiated</li>
+                <li>Supercook does (a) without (b) or (c) - the ingredient-matching premise is proven, the UX around it is the weakness</li>
+                <li>Yummly does (b) and (c) without (a) - personalisation is sophisticated but has no pantry awareness</li>
+                <li>Whisk does (a) partially, without (b) or (c) - ingredient matching is buried, not the hero feature</li>
+                <li>AI market encroachment is the biggest long-term risk - the AI-generated recipes differentiator has a 12 - 18 month window before it becomes table stakes. More durable moats: pantry optimisation, cooking history flywheel, UX delight</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="agent-card">
+            <summary>
+              <div class="agent-summary-text">
+                <div class="agent-label">Agent 5</div>
+                <div class="agent-title">PWA &amp; Technical Implementation</div>
+              </div>
+              <span class="agent-chevron">▾</span>
+            </summary>
+            <div class="agent-body">
+              <ul class="agent-findings">
+                <li>Skip next-pwa (legacy, real App Router friction) - a manual manifest.json is the cleanest approach for a MVP that doesn't need offline caching</li>
+                <li>themeColor must go in the viewport export, not the metadata export - the most common App Router PWA mistake, silently broken with no error</li>
+                <li>PostCSS config must be .mjs not .js with modern Next.js ("type": "module" in package.json requires this)</li>
+                <li>Tailwind v4: no tailwind.config.ts - all customisation goes in the CSS @theme block. Most tutorials covering v3 config are now wrong</li>
+                <li>localStorage: ~500KB worst-case (recipes + preferences + pantry) is well within the 5MB limit - the right call for a single-household MVP with no auth requirement</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Build Process -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Build Process</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>Phase 1 - Foundation: Next.js 14 project scaffold with TypeScript strict mode. Design system established (tokens, global CSS, mobile-first layout). Core library files written before any UI - storage, types, prompts, and AI client all defined upfront</li>
+          <li>Phase 2 - Section-by-section build: Onboarding flow, Pantry with score ring, Tonight with fridge grid and card swipe UI, Your Recipes collection, Big Shop with shopping list generation, Inspire mode, and Account with editable preferences</li>
+          <li>Phase 3 - UX Audit: a rigorous user journey review across all 7 stages identified friction points - post-onboarding redirect fixed, Yes now auto-saves before opening RecipeDetail, shopping list complete state improved, Lock → Confirm language throughout Shop</li>
+          <li>Phase 4 - PWA and Deployment: custom PWA icons generated, manifest configured, ANTHROPIC_API_KEY added as Railway environment variable. Confirmed working as an installed PWA on iPhone in standalone mode with no browser chrome</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Key Decisions -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Key Decisions</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <ul class="feature-list">
+          <li>No database - localStorage only. For a single-household MVP with no auth requirement, localStorage is sufficient and eliminates backend complexity entirely. All reads and writes go through lib/storage.ts - never raw localStorage calls</li>
+          <li>No recipe database - AI-generated every time. Claude Haiku generates every recipe fresh from the user's current context. Every suggestion is personalised by default, and there's no content maintenance overhead</li>
+          <li>All prompts in lib/prompts.ts. No inline prompt strings anywhere in the codebase - this makes prompt iteration and debugging straightforward, and ensures consistent context injection across all AI calls</li>
+          <li>All AI calls go through a single API route. User context is assembled client-side from localStorage and sent with every request. The AI never sees raw data - it receives a structured prompt, always</li>
+          <li>Rate limiting applied at the API route for MVP - basic, no auth required. Keeps the app open and frictionless while protecting against abuse</li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <!-- Tooling -->
+    <section class="project-section">
+      <div class="section-label">
+        <span>Tooling</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-section-content">
+        <div class="tag-row">
+          <span class="tag">Next.js 14</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">Claude Haiku</span>
+          <span class="tag">Anthropic SDK</span>
+          <span class="tag">Railway</span>
+          <span class="tag">PWA</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-text">Sebastian Bosman</span>
+      <span class="footer-text">Built with Claude Code + GitHub</span>
+    </div>
+  </footer>
+
+</body>
+</html>
